@@ -1,0 +1,3 @@
+[submodule "projects/leveldb"]
+	path = projects/leveldb
+	url = git@github.com:keshuigu/leveldb.git

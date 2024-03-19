@@ -4,7 +4,7 @@
     - encoder：将原始的高维数据映射到低维特征空间，这个特征维度一般比原始数据维度要小，这样就起到压缩或者降维的目的，这个低维特征也往往成为中间隐含特征
     - decoder：基于压缩后的低维特征来重建原始数据
 
-    ![ae_struct](/generative_model_learning/notes/images/ae_strcut.png)
+    ![ae_struct](images/ae_strcut.png)
 
     $g_\phi$为encoder网络的映射函数， $f_\theta$为decoder网络的映射函数， 从而有 $x'=f_\theta(z)=f_\theta(g_\phi(x))$ ， $x'$ 即为重建的数据。我们的目标是希望重建的数据和原来的数据近似一致，那么AE的训练损失函数可以采用简单的MSE(均方误差)：
 
@@ -30,7 +30,7 @@
 
     $$p_\theta(z|x)=\frac{p_\theta(x|z)p_\theta(z)}{p_\theta(x)}$$
 
-    ![vae_model_1](/generative_model_learning/notes/images/vae_model_1.png)
+    ![vae_model_1](images/vae_model_1.png)
 
     实线代表我们想要得到的生成模型 $p_{\theta}(x|z)p_{\theta}(z)$ ，其中先验分布 $p_{\theta}(z)$ 往往事先定义，而 $p_{\theta}(x|z)$ 用一个网络学习
 

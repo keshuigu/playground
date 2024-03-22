@@ -23,7 +23,7 @@
 
     说明： $p(z|x)$ 是后验，需要计算， $p(z)$ 表示先验，是对事物原本的认知； $p(x|z)$ 表示似然，是接触到了新的知识（数据）； $p(x)$ 表示证据，是这个新的知识的可信程度。现在的情况就是，先验和似然已知，要计算后验，而我们难在了计算证据这一步上。
 
-4. 变分自动编码器 ==> variational autoencoder
+4. 变分自动编码器 -> variational autoencoder
 
     结构与AE类似，建模方面存在较大区别。本质上VAE是一种基于[变分推断](https://zhuanlan.zhihu.com/p/118377754)的概率模型，属于生成模型，无监督模型。在变分推断中，除了已知的数据（观测数据，训练数据）外还存在一个隐含变量，这里已知的数据集记为 $X=\{x^{(i)}\}_{i=1}^{N}$ 由 $N$ 个连续或者离散变量 $x$ 组成，而未观测的随机变量记为 $z$ ，那么数据的产生包含两个过程:
 
@@ -33,13 +33,13 @@
     $\theta$ 指的是分布的参数。我们希望找到一个参数
      $\theta^{*}$ 来最大化生成真实数据的概率
 
-    $$\theta^{*}=\mathop{argmax}\limits_{\theta}(\prod_{i=1}^{n}p_{\theta}(x^{(i)})) \\ p_{\theta}(x^{(i)})=\int{p_{\theta}(x^{(i)}|z)p_{\theta}(z)dz}$$
+    $$\theta^{*}=\mathop{argmax}\limits_{\theta}(\prod_{i=1}^{n}p_{\theta}(x^{(i)})) \newline p_{\theta}(x^{(i)})=\int{p_{\theta}(x^{(i)}|z)p_{\theta}(z)dz}$$
 
     上述积分计算不现实：先验分布$p_{\theta}(z)$未知；如果分布复杂，对z穷举计算太耗时间。变分推断引入后验分布$p_\theta(z|x)$来联合建模，根据贝叶斯公式，后验分布为：
 
     $$p_\theta(z|x)=\frac{p_\theta(x|z)p_\theta(z)}{p_\theta(x)}$$
 
-    ![vae_model_1](https://cdn.jsdelivr.net/gh/keshuigu/images@main/imgs/vae_model_1.png))
+    ![vae_model_1](https://cdn.jsdelivr.net/gh/keshuigu/images@main/imgs/vae_model_1.png)
 
     实线代表我们想要得到的生成模型 $p_{\theta}(x|z)p_{\theta}(z)$ ，其中先验分布 $p_{\theta}(z)$ 往往事先定义，而 $p_{\theta}(x|z)$ 用一个网络学习。把 $z$ 看成隐含特征，那么这个网络可以看成一个**probabilistic decoder**。虚线代表的是对后验分布 $p_{\theta}(z|x)$ 的变分估计，记为 $q_{\phi}(z|x)$ ，它也可以用一个网络来学习，这个网络可以看成一个**probabilistic encoder**。最终目标是得到生成模型decoder，而encoder用于建模
 
@@ -53,7 +53,7 @@
 
     ELBO取负就是VAE要最小化的训练目标：
 
-    $$ L_{VAE}(\theta,\phi) = -\mathbb{E}_{z \sim q_\phi(z|x)}\log{p_\theta(x|z)} + D_{KL}(q_\phi(z|x)||p_\theta(z)) \\ \theta^{*},\phi^{*} = \mathop{argmin}\limits_{\theta,\phi}L_{VAE} $$
+    $$ L_{VAE}(\theta,\phi) = -\mathbb{E}_{z \sim q_\phi(z|x)}\log{p_\theta(x|z)} + D_{KL}(q_\phi(z|x)||p_\theta(z)) \newline \theta^{*},\phi^{*} = \mathop{argmin}\limits_{\theta,\phi}L_{VAE} $$
 
     步骤：
 
@@ -69,7 +69,7 @@
 
     $$  D_{KL}(q_\phi(z|x^{(i)})||p_\theta(z))=\frac{1}{2}\sum_{j=0}^{n}(-\log{(\sigma^{(i)}_j)^2}+(\sigma^{(i)}_j)^2+(\mu^{(i)}_j)^2-1) $$
 
-    重建误差： $-\mathbb{E}_{z \sim q_\phi(z|x)}\log{p_\theta(x|z)}$ ,  $p_\theta(x|z)$ 是给定 $z$ 下生成真实数据 $x$ 的似然
+    重建误差： $-\mathbb{E}_{z \sim q_{\phi}(z|x)} \log{p_{\theta}(x|z)}$ , $p_{\theta}(x|z)$ 是给定 $z$ 下生成真实数据 $x$ 的似然
 
     步骤：
 

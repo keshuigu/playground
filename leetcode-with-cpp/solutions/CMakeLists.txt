@@ -1,0 +1,1 @@
+add_library(solutions p704_search.cc)

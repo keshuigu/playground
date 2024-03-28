@@ -1,1 +1,1 @@
-add_library(solutions p704_search.cc)
+add_library(solutions solution_1_500.cc solution_500_1000.cc)

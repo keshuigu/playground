@@ -29,18 +29,35 @@ gtest_discover_tests(hello_test)
 add_subdirectory(solutions)
 
 add_executable(
-  test_main
-  test_main.cc
+  main_core
+  main_core.cc
 )
 
 target_link_libraries(
-  test_main
+  main_core
   PUBLIC
   solutions
 )
 
 target_include_directories(
-  test_main
+  main_core
+  PUBLIC
+  ${PROJECT_SOURCE_DIR}/solutions
+)
+
+add_executable(
+  main_acm
+  main_acm.cc
+)
+
+target_link_libraries(
+  main_acm
+  PUBLIC
+  solutions
+)
+
+target_include_directories(
+  main_acm
   PUBLIC
   ${PROJECT_SOURCE_DIR}/solutions
 )

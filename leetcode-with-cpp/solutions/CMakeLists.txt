@@ -1,1 +1,1 @@
-add_library(solutions solution_1_500.cc solution_500_1000.cc solution_2500_3000.cc)
+add_library(solutions solution_1_500.cc solution_500_1000.cc solution_1000_1500.cc solution_2500_3000.cc)

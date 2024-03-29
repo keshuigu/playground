@@ -30,6 +30,7 @@ add_subdirectory(solutions)
 
 add_executable(
   main_core
+  testcase.cc
   main_core.cc
 )
 
@@ -42,6 +43,7 @@ target_link_libraries(
 target_include_directories(
   main_core
   PUBLIC
+  ${PROJECT_SOURCE_DIR}
   ${PROJECT_SOURCE_DIR}/solutions
 )
 

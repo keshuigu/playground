@@ -21,3 +21,12 @@ void Testcase::Test::test_1004() {
                          1, 1, 0, 0, 0, 1, 1, 1, 1};
   std::cout << (new SolB1KA1K5::Solution())->solution_1004(v1, 3) << std::endl;
 }
+
+void Testcase::Test::test_2810() {
+  std::cout
+      << (new SolB2K5A3K::Solution())->solution_2810(std::string("string"))
+      << std::endl;
+  std::cout
+      << (new SolB2K5A3K::Solution())->solution_2810(std::string("poiinter"))
+      << std::endl;
+}

@@ -1,4 +1,6 @@
 #include "solution_2500_3000.h"
+
+#include <deque>
 SolB2K5A3K::Solution::Solution(/* args */) {}
 SolB2K5A3K::Solution::~Solution() {}
 
@@ -31,4 +33,20 @@ int SolB2K5A3K::Solution::solution_2908(std::vector<int>& nums) {
     return ans;
   else
     return -1;
+}
+
+std::string SolB2K5A3K::Solution::solution_2810(std::string s) {
+  std::deque<char> d;
+  bool tail = true;
+  for (auto&& n : s) {
+    if (n == 'i') {
+      tail = !tail;
+    } else if (tail) {
+      d.push_back(n);
+    } else {
+      d.push_front(n);
+    }
+  }
+  return tail ? std::string(d.begin(), d.end())
+              : std::string(d.rbegin(), d.rend());
 }

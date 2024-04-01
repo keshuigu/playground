@@ -13,6 +13,7 @@ class Test {
   ~Test();
   void test_2908();
   void test_1004();
+  void test_2810();
 };
 
 }  // namespace Testcase

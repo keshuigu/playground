@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "solution_1_500.h"
-#include "solution_500_1000.h"
+#include "my_solution.h"
+using namespace MySolution;
 int main() {
   int n;
   std::cin >> n;
@@ -13,6 +13,6 @@ int main() {
   }
   int val;
   std::cin >> val;
-  std::cout << (new SolB1A5K::Solution())->solution_27(nums, val) << std::endl;
+  std::cout << Solution().solution_27(nums, val) << std::endl;
   return 0;
 }

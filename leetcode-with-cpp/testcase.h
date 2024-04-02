@@ -1,9 +1,6 @@
 #ifndef TESTCASE_H
 #define TESTCASE_H
-#include "solution_1000_1500.h"
-#include "solution_1_500.h"
-#include "solution_2500_3000.h"
-#include "solution_500_1000.h"
+#include "my_solution.h"
 namespace Testcase {
 class Test {
  private:

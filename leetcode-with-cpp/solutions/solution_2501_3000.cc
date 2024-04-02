@@ -1,10 +1,9 @@
-#include "solution_2500_3000.h"
-
 #include <deque>
-SolB2K5A3K::Solution::Solution(/* args */) {}
-SolB2K5A3K::Solution::~Solution() {}
 
-int SolB2K5A3K::Solution::solution_2908(std::vector<int>& nums) {
+#include "my_solution.h"
+using namespace MySolution;
+
+int Solution::solution_2908(std::vector<int>& nums) {
   int n = nums.size();
   std::vector<int> pre(n);
   std::vector<int> suf(n);
@@ -35,7 +34,7 @@ int SolB2K5A3K::Solution::solution_2908(std::vector<int>& nums) {
     return -1;
 }
 
-std::string SolB2K5A3K::Solution::solution_2810(std::string s) {
+std::string Solution::solution_2810(std::string s) {
   std::deque<char> d;
   bool tail = true;
   for (auto&& n : s) {

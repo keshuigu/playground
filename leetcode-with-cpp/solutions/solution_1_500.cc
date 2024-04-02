@@ -3,7 +3,7 @@ using namespace MySolution;
 Solution::Solution(/* args */) {}
 Solution::~Solution() {}
 
-int Solution::solution_27(std::vector<int>& nums, int val) {
+int Solution::solution_27(vector<int>& nums, int val) {
   int n = nums.size();
   int slowIndex = 0;
   for (int fastIndex = 0; fastIndex < nums.size(); fastIndex++) {

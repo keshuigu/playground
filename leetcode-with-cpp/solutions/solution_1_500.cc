@@ -1,4 +1,5 @@
 #include "my_solution.h"
+#define inf 0x3f3f3f3f
 using namespace MySolution;
 Solution::Solution(/* args */) {}
 Solution::~Solution() {}
@@ -15,4 +16,16 @@ int Solution::solution_27(vector<int>& nums, int val) {
     }
   }
   return slowIndex;
+}
+
+int Solution::solution_209(int target, vector<int>& nums) {
+  int left = 0, ans = inf, s = 0;
+  for (int right = 0; right < nums.size(); right++) {
+    s += nums[right];
+    while (s >= target) {
+      ans = std::min(ans, right - left + 1);
+      s -= nums[left++];
+    }
+  }
+  return ans == inf ? 0 : ans;
 }

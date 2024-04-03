@@ -50,3 +50,12 @@ void Test::test_1379() {
   TreeNode *cloned = construct_binary_tree(v);
   cout << Solution().solution_1379(original, cloned, target) << endl;
 }
+
+void Test::test_209() {
+  vector<int> v = {2, 3, 1, 2, 4, 3};
+  cout << Solution().solution_209(7, v) << endl;
+  v = {1, 4, 4};
+  cout << Solution().solution_209(4, v) << endl;
+  v = {1, 1, 1, 1, 1, 1, 1, 1};
+  cout << Solution().solution_209(11, v) << endl;
+}

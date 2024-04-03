@@ -7,6 +7,7 @@
 using namespace MySolution;
 using namespace Testcase;
 using namespace std;
+using namespace MyDataStruct;
 Test::Test(/* args */) {}
 Test::~Test() {}
 
@@ -40,4 +41,12 @@ void Test::test_894() {
 
   // cout << v << endl;
   // cout << Solution().solution_894(7) << endl;
+}
+
+void Test::test_1379() {
+  TreeNode *target = new TreeNode(3, new TreeNode(6), new TreeNode(19));
+  TreeNode *original = new TreeNode(7, new TreeNode(4), target);
+  vector<int> v = {7, 4, 3, -1, -1, 6, 19};
+  TreeNode *cloned = construct_binary_tree(v);
+  cout << Solution().solution_1379(original, cloned, target) << endl;
 }

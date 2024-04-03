@@ -24,6 +24,8 @@ class Solution {
 
   /* solution 1001 - 1500 */
   int solution_1004(vector<int>& nums, int k);
+  TreeNode* solution_1379(TreeNode* original, TreeNode* cloned,
+                          TreeNode* target);
   /* solution 1001 - 1500 */
 
   /* solution 1501 - 2000 */

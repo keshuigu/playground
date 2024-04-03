@@ -11,6 +11,7 @@ class Test {
   void test_1004();
   void test_2810();
   void test_894();
+  void test_1379();
 };
 
 }  // namespace Testcase

@@ -1,6 +1,7 @@
 #ifndef DATA_STRUCT_H
 #define DATA_STRUCT_H
 #include <iostream>
+#include <vector>
 namespace MyDataStruct {
 struct TreeNode {
   int val;
@@ -12,6 +13,7 @@ struct TreeNode {
       : val(x), left(left), right(right) {}
 };
 std::ostream &operator<<(std::ostream &os, const TreeNode *t);
+TreeNode *construct_binary_tree(const std::vector<int> &vec);
 }  // namespace MyDataStruct
 
 #endif

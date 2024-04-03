@@ -12,3 +12,16 @@ int Solution::solution_1004(vector<int>& nums, int k) {
   }
   return ans;
 }
+
+TreeNode* Solution::solution_1379(TreeNode* original, TreeNode* cloned,
+                                  TreeNode* target) {
+  if (!original || original == target) {
+    return cloned;
+  }
+  TreeNode* ans = solution_1379(original->left, cloned->left, target);
+  if (ans) {
+    return ans;
+  } else {
+    return solution_1379(original->right, cloned->right, target);
+  }
+}

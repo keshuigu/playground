@@ -59,3 +59,22 @@ void Test::test_209() {
   v = {1, 1, 1, 1, 1, 1, 1, 1};
   cout << Solution().solution_209(11, v) << endl;
 }
+
+void Test::test_2192() {
+  vector<vector<int>> v = {{0, 3}, {0, 4}, {1, 3}, {2, 4}, {2, 7},
+                           {3, 5}, {3, 6}, {3, 7}, {4, 6}};
+  for (auto &&ans : Solution().solution_2192(8, v)) {
+    for (auto &&parent : ans) {
+      cout << parent << " ";
+    }
+    cout << endl;
+  }
+  vector<vector<int>> v1 = {{0, 1}, {0, 2}, {0, 3}, {0, 4}, {1, 2},
+                            {1, 3}, {1, 4}, {2, 3}, {2, 4}, {3, 4}};
+  for (auto &&ans : Solution().solution_2192(5, v1)) {
+    for (auto &&parent : ans) {
+      cout << parent << " ";
+    }
+    cout << endl;
+  }
+}

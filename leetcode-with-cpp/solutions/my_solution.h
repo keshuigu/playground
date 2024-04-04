@@ -28,10 +28,11 @@ class Solution {
   TreeNode* solution_1379(TreeNode* original, TreeNode* cloned,
                           TreeNode* target);
   /* solution 1001 - 1500 */
-
+  vector<vector<int>> solution_2192(int n, vector<vector<int>>& edges);
   /* solution 1501 - 2000 */
   /* solution 1501 - 2000 */
   /* solution 2001 - 2500 */
+
   /* solution 2001 - 2500 */
 
   /* solution 2501 - 3000 */

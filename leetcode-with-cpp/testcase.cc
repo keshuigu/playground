@@ -78,3 +78,21 @@ void Test::test_2192() {
     cout << endl;
   }
 }
+
+void Test::test_1026() {
+  vector<int> v = {8, 3, 10, 1, 6, -1, 14, -1, -1, 4, 7, 13};
+  cout << Solution().solution_1026(construct_binary_tree(v)) << endl;
+  v = {1, -1, 2, -1, -1, -1, 0, -1, -1, -1, -1, -1, -1, 3};
+  cout << Solution().solution_1026(construct_binary_tree(v)) << endl;
+  v = {1, 1, 8};
+  cout << Solution().solution_1026(construct_binary_tree(v)) << endl;
+}
+
+void Test::test_1026_2() {
+  vector<int> v = {8, 3, 10, 1, 6, -1, 14, -1, -1, 4, 7, 13};
+  cout << Solution().solution_1026_2(construct_binary_tree(v)) << endl;
+  v = {1, -1, 2, -1, -1, -1, 0, -1, -1, -1, -1, -1, -1, 3};
+  cout << Solution().solution_1026_2(construct_binary_tree(v)) << endl;
+  v = {1, 1, 8};
+  cout << Solution().solution_1026_2(construct_binary_tree(v)) << endl;
+}

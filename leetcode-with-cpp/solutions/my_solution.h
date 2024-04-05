@@ -27,8 +27,9 @@ class Solution {
   int solution_1004(vector<int>& nums, int k);
   TreeNode* solution_1379(TreeNode* original, TreeNode* cloned,
                           TreeNode* target);
+  int solution_1026(TreeNode* root);
+  int solution_1026_2(TreeNode* root);
   /* solution 1001 - 1500 */
-  vector<vector<int>> solution_2192(int n, vector<vector<int>>& edges);
   /* solution 1501 - 2000 */
   /* solution 1501 - 2000 */
   /* solution 2001 - 2500 */
@@ -36,6 +37,7 @@ class Solution {
   /* solution 2001 - 2500 */
 
   /* solution 2501 - 3000 */
+  vector<vector<int>> solution_2192(int n, vector<vector<int>>& edges);
   int solution_2908(vector<int>& nums);
   string solution_2810(string s);
   /* solution 2501 - 3000 */

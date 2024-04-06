@@ -96,3 +96,11 @@ void Test::test_1026_2() {
   v = {1, 1, 8};
   cout << Solution().solution_1026_2(construct_binary_tree(v)) << endl;
 }
+
+void Test::test_1483() {
+  vector<int> v = {-1, 0, 0, 1, 1, 2, 2};
+  TreeAncestor tree = TreeAncestor(7, v);
+  cout << tree.getKthAncestor(3, 1) << endl;
+  cout << tree.getKthAncestor(5, 2) << endl;
+  cout << tree.getKthAncestor(6, 3) << endl;
+}

@@ -1,16 +1,17 @@
 
 #include "data_struct.h"
 
+#include <functional>
 #include <queue>
 
 using namespace MyDataStruct;
-
-std::ostream &MyDataStruct::operator<<(std::ostream &os, const TreeNode *t) {
-  std::queue<const TreeNode *> q;
+using namespace std;
+ostream &MyDataStruct::operator<<(ostream &os, const TreeNode *t) {
+  queue<const TreeNode *> q;
   q.push(t);
   os << t->val << " ";
   while (!q.empty()) {
-    std::queue<const TreeNode *> tmp;
+    queue<const TreeNode *> tmp;
     q.swap(tmp);
     while (!tmp.empty()) {
       const TreeNode *node = tmp.front();
@@ -32,8 +33,8 @@ std::ostream &MyDataStruct::operator<<(std::ostream &os, const TreeNode *t) {
   return os;
 }
 
-TreeNode *MyDataStruct::construct_binary_tree(const std::vector<int> &vec) {
-  std::vector<TreeNode *> vecTree(vec.size(), nullptr);
+TreeNode *MyDataStruct::construct_binary_tree(const vector<int> &vec) {
+  vector<TreeNode *> vecTree(vec.size(), nullptr);
   TreeNode *root = nullptr;
   for (int i = 0; i < vec.size(); i++) {
     TreeNode *node = nullptr;
@@ -55,4 +56,92 @@ TreeNode *MyDataStruct::construct_binary_tree(const std::vector<int> &vec) {
     }
   }
   return root;
+}
+
+TreeAncestor::TreeAncestor(int n, vector<int> &parent) {
+  int m = 32 - __builtin_clz(n);  // 二进制长度
+  pa.resize(n, vector<int>(m, -1));
+  for (int i = 0; i < n; i++) {
+    pa[i][0] = parent[i];
+  }
+  for (int i = 0; i < m - 1; i++) {
+    for (int x = 0; x < n; x++) {
+      if (int p = pa[x][i]; p != -1) {
+        pa[x][i + 1] = pa[p][i];
+      }
+    }
+  }
+}
+
+TreeAncestor::~TreeAncestor() {}
+
+int TreeAncestor::getKthAncestor(int node, int k) {
+  int m = 32 - __builtin_clz(k);
+  for (int i = 0; i < m; i++) {
+    if ((k >> i) & 1) {
+      node = pa[node][i];
+      if (node < 0) {
+        break;
+      }
+    }
+  }
+  return node;
+}
+
+TreeAncestorTemplate::TreeAncestorTemplate(vector<pair<int, int>> &edges) {
+  int n = edges.size() + 1;
+  int m = 32 - __builtin_clz(n);  // 二进制长度
+  vector<vector<int>> g(n);
+  for (auto &&[x, y] : edges) {
+    g[x].push_back(y);
+    g[y].push_back(x);
+  }
+
+  depth.resize(n);
+  pa.resize(n, vector<int>(m, -1));
+  function<void(int, int)> dfs = [&](int x, int fa) {
+    pa[x][0] = fa;
+    for (auto &&y : g[x]) {
+      if (!(y == fa)) {
+        depth[y] = depth[x] + 1;
+        dfs(y, x);
+      }
+    }
+  };
+  dfs(0, -1);
+
+  for (int i = 0; i < m; i++) {
+    for (int x = 0; x < n; x++) {
+      if (int p = pa[x][i]; p != -1) {
+        pa[x][i + 1] = pa[p][i];
+      }
+    }
+  }
+}
+
+TreeAncestorTemplate::~TreeAncestorTemplate() {}
+
+int TreeAncestorTemplate::getKthAncestor(int node, int k) {
+  for (; k; k &= k - 1) {
+    node = pa[node][__builtin_ctz(k)];
+  }
+  return node;
+}
+
+int TreeAncestorTemplate::getLca(int x, int y) {
+  if (depth[x] > depth[y]) {
+    swap(x, y);
+  }
+  y = getKthAncestor(y, depth[y] - depth[x]);
+  if (y == x) {
+    return x;
+  }
+  for (int i = pa.size() - 1; i >= 0; i--) {
+    int px = pa[x][i], py = pa[y][i];
+    if (px != py) {
+      x = px;
+      y = py;
+    }
+  }
+  return pa[x][0];
 }

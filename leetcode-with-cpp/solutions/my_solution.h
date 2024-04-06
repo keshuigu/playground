@@ -29,6 +29,7 @@ class Solution {
                           TreeNode* target);
   int solution_1026(TreeNode* root);
   int solution_1026_2(TreeNode* root);
+  void solution_1483();  // data_struct.cc#TreeAncestor
   /* solution 1001 - 1500 */
   /* solution 1501 - 2000 */
   /* solution 1501 - 2000 */

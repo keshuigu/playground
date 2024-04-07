@@ -1,6 +1,9 @@
 #ifndef DATA_STRUCT_H
 #define DATA_STRUCT_H
 #include <iostream>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
 #include <utility>
 #include <vector>
 namespace MyDataStruct {
@@ -37,6 +40,20 @@ class TreeAncestorTemplate {
   ~TreeAncestorTemplate();
   int getKthAncestor(int node, int k);
   int getLca(int x, int y);
+};
+
+class ThroneIneritance {
+ private:
+  std::unordered_map<std::string, std::vector<std::string>> edges;
+  std::unordered_set<std::string> dead;
+  std::string king;
+
+ public:
+  ThroneIneritance(std::string kingName);
+  ~ThroneIneritance();
+  void birth(std::string parentName, std::string childName);
+  void death(std::string name);
+  std::vector<std::string> getInheritanceOrder();
 };
 
 #endif

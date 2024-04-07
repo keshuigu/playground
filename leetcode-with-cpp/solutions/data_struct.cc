@@ -145,3 +145,29 @@ int TreeAncestorTemplate::getLca(int x, int y) {
   }
   return pa[x][0];
 }
+
+ThroneIneritance::ThroneIneritance(string kingName) : king{move(kingName)} {}
+
+ThroneIneritance::~ThroneIneritance() {}
+
+void ThroneIneritance::birth(string parentName, string childName) {
+  edges[move(parentName)].push_back(move(childName));
+}
+
+void ThroneIneritance::death(string name) { dead.insert(move(name)); }
+
+vector<string> ThroneIneritance::getInheritanceOrder() {
+  vector<string> ans;
+  function<void(const string &)> preorder = [&](const string &name) {
+    if (!dead.count(name)) {
+      ans.push_back(name);
+    }
+    if (edges.count(name)) {
+      for (auto &&child : edges[name]) {
+        preorder(child);
+      }
+    }
+  };
+  preorder(king);
+  return ans;
+}

@@ -104,3 +104,22 @@ void Test::test_1483() {
   cout << tree.getKthAncestor(5, 2) << endl;
   cout << tree.getKthAncestor(6, 3) << endl;
 }
+
+void Test::test_1600() {
+  ThroneIneritance *t = new ThroneIneritance("king");
+  t->birth("king", "andy");
+  t->birth("king", "bob");
+  t->birth("king", "catherine");
+  t->birth("andy", "matthew");
+  t->birth("bob", "alex");
+  t->birth("bob", "asha");
+  for (auto &&person : t->getInheritanceOrder()) {
+    cout << person << " ";
+  }
+  cout << endl;
+  t->death("bob");
+  for (auto &&person : t->getInheritanceOrder()) {
+    cout << person << " ";
+  }
+  cout << endl;
+}

@@ -31,7 +31,9 @@ class Solution {
   int solution_1026_2(TreeNode* root);
   void solution_1483();  // data_struct.cc#TreeAncestor
   /* solution 1001 - 1500 */
+
   /* solution 1501 - 2000 */
+  void solution_1600();  // data_struct.cc#ThroneInheritance
   /* solution 1501 - 2000 */
   /* solution 2001 - 2500 */
 

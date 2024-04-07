@@ -908,3 +908,56 @@ println(x, " ", f(x))
 另一方面，在凸优化中，对偶性是指将原始问题转化为另一个等价的问题的过程。对于每一个原问题，都存在一个对偶问题，它们之间是等价的。对偶问题中的最优解等于原问题的最优解，而且对于任意一个可行解，原问题的目标函数值不小于对偶问题的目标函数值。
 
 在某些情况下，共轭函数与对偶性之间存在着密切的联系。特别地，如果一个函数 $f(x)$ 在它在定义域上的凸壳（convex hull）内是凸函数，则该函数的共轭函数 $f^*(y)$ 也是凸函数，并且它们之间存在着一种对偶关系，即$f^{**}(x)=f(x)$。
+
+## 测试函数
+
+```julia
+using LinearAlgebra
+using SpecialFunctions
+function ackley(x::Vector{Float64})
+  n = length(x)
+  return -20 * exp(-0.2 * sqrt(1 / n * sum(x .^ 2))) - exp(1 / n * sum(cos.(2 * pi * x))) + 20 + SpecialFunctions.e
+end
+
+function booth(x::Vector{Float64})
+  return (x[1] + 2 * [x2] - 7)^2 + (2 * x[1] + x[2] - 5)^2
+end
+
+function branin(x::Vector{Float64})
+  a = 1
+  b = 5.1 / (4 * pi^2)
+  c = 5 / pi
+  r = 6
+  s = 10
+  t = 1 / (8 * pi)
+  return a * (x[2] - b * x[1]^2 + c * x[1] - r)^2 + s * (1 - t)cos(x[1]) + s
+end
+
+function flower(x::Vector{Float64})
+  a = 1
+  b = 1
+  c = 4
+  return a * norm(x) + b * sin(c * atan(x[2], [x1]))
+end
+
+function michalewicz(x::Vector{Float64}, m::Int=10)
+  return -sum(sin.(x) .* (sin.((1:length(x)) .* x .^ 2 / π)) .^ (2m))
+end
+
+function rosenbrock(x::Vector{Float64})
+  a = 1
+  b = 100 # b=5l
+  return (a - x[1])^2 + b * (x[2] - x[1]^2)^2
+end
+
+function wheeler(x::Vector{Float64})
+  a = 1.5
+  return -exp(-(x[1] * x[2] - a)^2 - (x[2] - a)^2)
+end
+
+function circle(x::Vector{Float64})
+  r = 1 / 2 + 1 / 2 * (2 * x[2] / (1 + x[2]^2))
+  θ = x[1]
+  return [1 - r * cos(θ), 1 - r * sin(θ)]
+end
+```

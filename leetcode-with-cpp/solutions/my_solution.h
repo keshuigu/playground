@@ -36,7 +36,7 @@ class Solution {
   void solution_1600();  // data_struct.cc#ThroneInheritance
   /* solution 1501 - 2000 */
   /* solution 2001 - 2500 */
-
+  int solution_2009(vector<int>& nums);
   /* solution 2001 - 2500 */
 
   /* solution 2501 - 3000 */

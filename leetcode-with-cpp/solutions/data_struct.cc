@@ -146,15 +146,16 @@ int TreeAncestorTemplate::getLca(int x, int y) {
   return pa[x][0];
 }
 
-ThroneIneritance::ThroneIneritance(string kingName) : king{move(kingName)} {}
+ThroneIneritance::ThroneIneritance(string kingName)
+    : king{std::move(kingName)} {}
 
 ThroneIneritance::~ThroneIneritance() {}
 
 void ThroneIneritance::birth(string parentName, string childName) {
-  edges[move(parentName)].push_back(move(childName));
+  edges[std::move(parentName)].push_back(std::move(childName));
 }
 
-void ThroneIneritance::death(string name) { dead.insert(move(name)); }
+void ThroneIneritance::death(string name) { dead.insert(std::move(name)); }
 
 vector<string> ThroneIneritance::getInheritanceOrder() {
   vector<string> ans;

@@ -33,3 +33,23 @@ vector<vector<int>> Solution::solution_2192(int n, vector<vector<int>>& edges) {
   }
   return ans;
 }
+
+int Solution::solution_2009(vector<int>& nums) {
+  int n = nums.size();
+  int j = 1;
+  ranges::sort(nums);
+  // for (int i = 1; i < n; i++) {
+  //   if (nums[i] != nums[i - 1]) {
+  //     nums[j++] = nums[i];
+  //   }
+  // }
+  int e = unique(nums.begin(), nums.end()) - nums.begin();
+  int ans = 0, left = 0;
+  for (int i = 0; i < e; i++) {
+    while (nums[left] < nums[i] - n + 1) {
+      left++;
+    }
+    ans = max(ans, i - left + 1);
+  }
+  return n - ans;
+}

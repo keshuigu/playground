@@ -123,3 +123,12 @@ void Test::test_1600() {
   }
   cout << endl;
 }
+
+void Test::test_2009() {
+  vector<int> v = {4, 2, 5, 3};
+  cout << Solution().solution_2009(v) << endl;
+  vector<int> v1 = {1, 2, 3, 5, 6};
+  cout << Solution().solution_2009(v1) << endl;
+  vector<int> v2 = {1, 10, 100, 1000};
+  cout << Solution().solution_2009(v2) << endl;
+}

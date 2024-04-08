@@ -16,6 +16,7 @@ class Solution {
   /* solution 1 - 500 */
   int solution_27(vector<int>& nums, int val);
   int solution_209(int target, vector<int>& nums);
+  string solution_405(int num);
   /* solution 1 - 500 */
 
   /* solution 501 - 1000 */

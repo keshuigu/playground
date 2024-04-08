@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "my_solution.h"
 #define inf 0x3f3f3f3f
 using namespace MySolution;
@@ -28,4 +30,17 @@ int Solution::solution_209(int target, vector<int>& nums) {
     }
   }
   return ans == inf ? 0 : ans;
+}
+
+string Solution::solution_405(int num) {
+  string s = "0123456789abcdef";
+  string sb;
+  for (int i = 7; i >= 0; i--) {
+    int part = (num >> (4 * i)) & 0xf;
+    if (sb.length() > 0 || part > 0) {
+      char digit = s[part];
+      sb.push_back(digit);
+    }
+  }
+  return sb;
 }

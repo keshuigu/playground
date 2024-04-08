@@ -132,3 +132,8 @@ void Test::test_2009() {
   vector<int> v2 = {1, 10, 100, 1000};
   cout << Solution().solution_2009(v2) << endl;
 }
+
+void Test::test_405() {
+  cout << Solution().solution_405(26) << endl;
+  cout << Solution().solution_405(-1) << endl;
+}

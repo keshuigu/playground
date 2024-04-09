@@ -137,3 +137,12 @@ void Test::test_405() {
   cout << Solution().solution_405(26) << endl;
   cout << Solution().solution_405(-1) << endl;
 }
+
+void Test::test_2529() {
+  vector<int> v = {-2, -1, -1, 1, 2, 3};
+  cout << Solution().solution_2529(v) << endl;
+  v = {-3, -2, -1, 0, 0, 1, 2};
+  cout << Solution().solution_2529(v) << endl;
+  v = {5, 20, 66, 1314};
+  cout << Solution().solution_2529(v) << endl;
+}

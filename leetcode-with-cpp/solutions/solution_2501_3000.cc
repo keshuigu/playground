@@ -1,4 +1,6 @@
+#include <algorithm>
 #include <deque>
+#include <ranges>
 
 #include "my_solution.h"
 using namespace MySolution;
@@ -47,4 +49,10 @@ string Solution::solution_2810(string s) {
     }
   }
   return tail ? string(d.begin(), d.end()) : string(d.rbegin(), d.rend());
+}
+
+int Solution::solution_2529(vector<int>& nums) {
+  int neg = ranges::lower_bound(nums, 0) - nums.begin();
+  int pos = nums.end() - ranges::upper_bound(nums, 0);
+  return max(neg, pos);
 }

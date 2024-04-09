@@ -146,3 +146,29 @@ void Test::test_2529() {
   v = {5, 20, 66, 1314};
   cout << Solution().solution_2529(v) << endl;
 }
+
+void Test::test_59() {
+  vector<vector<int>> v = Solution().solution_59(3);
+  for (int i = 0; i < v.size(); i++) {
+    for (int j = 0; j < v[i].size(); j++) {
+      cout << v[i][j];
+    }
+    cout << endl;
+  }
+
+  v = Solution().solution_59(1);
+  for (int i = 0; i < v.size(); i++) {
+    for (int j = 0; j < v[i].size(); j++) {
+      cout << v[i][j];
+    }
+    cout << endl;
+  }
+
+  v = Solution().solution_59(5);
+  for (int i = 0; i < v.size(); i++) {
+    for (int j = 0; j < v[i].size(); j++) {
+      cout << v[i][j];
+    }
+    cout << endl;
+  }
+}

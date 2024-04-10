@@ -172,3 +172,8 @@ void Test::test_59() {
     cout << endl;
   }
 }
+
+void Test::test_1702() {
+  cout << Solution().solution_1702(string("000110")) << endl;
+  cout << Solution().solution_1702(string("01")) << endl;
+}

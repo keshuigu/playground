@@ -75,3 +75,21 @@ vector<vector<int>> Solution::solution_59(int n) {
   }
   return matrix;
 }
+
+ListNode* Solution::solution_203(ListNode* head, int val) {
+  ListNode* dummyHead = new ListNode();
+  dummyHead->next = head;
+  ListNode* p = dummyHead;
+  while (p->next) {
+    if (p->next->val == val) {
+      ListNode* cur = p->next;
+      p->next = cur->next;
+      delete cur;
+    } else {
+      p = p->next;
+    }
+  }
+  ListNode* ans = dummyHead->next;
+  delete dummyHead;
+  return ans;
+}

@@ -17,7 +17,6 @@ struct TreeNode {
 };
 std::ostream &operator<<(std::ostream &os, const TreeNode *t);
 TreeNode *construct_binary_tree(const std::vector<int> &vec);
-}  // namespace MyDataStruct
 
 class TreeAncestor {
  private:
@@ -55,4 +54,14 @@ class ThroneIneritance {
   std::vector<std::string> getInheritanceOrder();
 };
 
+struct ListNode {
+  int val;
+  ListNode *next;
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+std::ostream &operator<<(std::ostream &os, const ListNode *t);
+
+}  // namespace MyDataStruct
 #endif

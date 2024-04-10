@@ -172,3 +172,11 @@ vector<string> ThroneIneritance::getInheritanceOrder() {
   preorder(king);
   return ans;
 }
+
+ostream &MyDataStruct::operator<<(ostream &os, const ListNode *t) {
+  while (t) {
+    os << t->val;
+    t = t->next;
+  }
+  return os;
+}

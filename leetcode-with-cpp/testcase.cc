@@ -177,3 +177,18 @@ void Test::test_1702() {
   cout << Solution().solution_1702(string("000110")) << endl;
   cout << Solution().solution_1702(string("01")) << endl;
 }
+
+void Test::test_203() {
+  ListNode *head = new ListNode(
+      1,
+      new ListNode(
+          2,
+          new ListNode(
+              6, new ListNode(
+                     3, new ListNode(4, new ListNode(5, new ListNode(6)))))));
+  cout << Solution().solution_203(head, 6) << endl;
+  head = nullptr;
+  cout << Solution().solution_203(head, 1) << endl;
+  head = new ListNode(7, new ListNode(7, new ListNode(7, new ListNode(7))));
+  cout << Solution().solution_203(head, 7) << endl;
+}

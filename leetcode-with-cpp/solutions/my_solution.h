@@ -38,6 +38,7 @@ class Solution {
   /* solution 1501 - 2000 */
   void solution_1600();  // data_struct.cc#ThroneInheritance
   string solution_1702(string binary);
+  vector<int> solution_1766(vector<int>& nums, vector<vector<int>>& edges);
   /* solution 1501 - 2000 */
 
   /* solution 2001 - 2500 */

@@ -192,3 +192,21 @@ void Test::test_203() {
   head = new ListNode(7, new ListNode(7, new ListNode(7, new ListNode(7))));
   cout << Solution().solution_203(head, 7) << endl;
 }
+
+void Test::test_1766() {
+  vector<int> nums = {2, 3, 3, 2};
+  vector<vector<int>> edges = {{0, 1}, {1, 2}, {1, 3}};
+  vector<int> ans = Solution().solution_1766(nums, edges);
+  for (auto &&i : ans) {
+    cout << i;
+  }
+  cout << endl;
+
+  nums = {5, 6, 10, 2, 3, 6, 15};
+  edges = {{0, 1}, {0, 2}, {1, 3}, {1, 4}, {2, 5}, {2, 6}};
+  ans = Solution().solution_1766(nums, edges);
+  for (auto &&i : ans) {
+    cout << i;
+  }
+  cout << endl;
+}

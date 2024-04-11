@@ -19,11 +19,13 @@ class Solution {
   string solution_405(int num);
   vector<vector<int>> solution_59(int n);
   ListNode* solution_203(ListNode* head, int val);
+  int solution_409(string s);
   /* solution 1 - 500 */
 
   /* solution 501 - 1000 */
   int solution_704(vector<int>& nums, int target);
   vector<TreeNode*> solution_894(int n);
+  void solution_707();  // data_struct.cc#MyLinkedList
   /* solution 501 - 1000 */
 
   /* solution 1001 - 1500 */

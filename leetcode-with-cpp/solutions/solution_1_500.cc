@@ -93,3 +93,21 @@ ListNode* Solution::solution_203(ListNode* head, int val) {
   delete dummyHead;
   return ans;
 }
+
+int Solution::solution_409(string s) {
+  unordered_map<char, int> cnt;
+  for (auto&& c : s) {
+    cnt[c]++;
+  }
+  int ans = 0;
+  bool flag = false;
+  for (auto&& pair : cnt) {
+    if (pair.second % 2 == 0) {
+      ans += pair.second;
+    } else {
+      ans += pair.second - 1;
+      flag = true;
+    }
+  }
+  return flag ? ans + 1 : ans;
+}

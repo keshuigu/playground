@@ -180,3 +180,83 @@ ostream &MyDataStruct::operator<<(ostream &os, const ListNode *t) {
   }
   return os;
 }
+
+MyLinkedList::Node::Node(int val) : val{val} {}
+MyLinkedList::Node::~Node() {}
+
+MyLinkedList::MyLinkedList() {
+  dummyHead = new Node(0);
+  dummyTail = new Node(0);
+  dummyHead->next = dummyTail;
+  dummyTail->prev = dummyHead;
+  size = 0;
+}
+MyLinkedList::~MyLinkedList() {
+  Node *p = dummyHead;
+  Node *q;
+  while (p) {
+    q = p;
+    p = p->next;
+    delete q;
+  }
+  dummyHead = nullptr;
+  dummyTail = nullptr;
+}
+int MyLinkedList::get(int index) {
+  if (index >= size || index < 0) {
+    return -1;
+  }
+  Node *cur = dummyHead;
+  for (int i = 0; i < index + 1; i++) {
+    cur = cur->next;
+  }
+  return cur->val;
+}
+void MyLinkedList::addAtHead(int val) {
+  Node *node = new Node(val);
+  // dummyHead -> node -> dummyHead->next
+  node->next = dummyHead->next;
+  node->prev = dummyHead;
+  dummyHead->next->prev = node;
+  dummyHead->next = node;
+  size++;
+}
+void MyLinkedList::addAtTail(int val) {
+  Node *node = new Node(val);
+  // dummyTail->prev -> node -> dummyTail
+  node->next = dummyTail;
+  node->prev = dummyTail->prev;
+  dummyTail->prev->next = node;
+  dummyTail->prev = node;
+  size++;
+}
+void MyLinkedList::addAtIndex(int index, int val) {
+  if (index > size || index < 0) {
+    return;
+  }
+  Node *cur = dummyHead;
+  for (int i = 0; i < index + 1; i++) {
+    cur = cur->next;
+  }
+  Node *node = new Node(val);
+  // cur->prev -> node -> cur
+  node->next = cur;
+  node->prev = cur->prev;
+  cur->prev->next = node;
+  cur->prev = node;
+  size++;
+}
+void MyLinkedList::deleteAtIndex(int index) {
+  if (index >= size || index < 0) {
+    return;
+  }
+  Node *cur = dummyHead;
+  for (int i = 0; i < index + 1; i++) {
+    cur = cur->next;
+  }
+  // cur->prev -> cur  -> cur->next
+  cur->prev->next = cur->next;
+  cur->next->prev = cur->prev;
+  delete cur;
+  size--;
+}

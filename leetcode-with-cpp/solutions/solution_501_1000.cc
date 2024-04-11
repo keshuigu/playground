@@ -1,3 +1,5 @@
+#include <unordered_map>
+
 #include "my_solution.h"
 using namespace MySolution;
 int Solution::solution_704(vector<int>& nums, int target) {

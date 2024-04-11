@@ -210,3 +210,28 @@ void Test::test_1766() {
   }
   cout << endl;
 }
+
+void Test::test_409() {
+  string s = "abccccdd";
+  cout << Solution().solution_409(s) << endl;
+  s = "a";
+  cout << Solution().solution_409(s) << endl;
+  s = "aaaaaccc";
+  cout << Solution().solution_409(s) << endl;
+}
+
+void Test::test_707() {
+  MyLinkedList o = MyLinkedList();
+  o.addAtHead(1);
+  o.addAtTail(3);
+  o.addAtIndex(1, 2);
+  cout << o.get(1) << endl;
+  o.deleteAtIndex(1);
+  cout << o.get(1) << endl;
+  // o.~MyLinkedList();
+  MyLinkedList o1 = MyLinkedList();
+  o1.addAtIndex(0, 10);
+  o1.addAtIndex(0, 20);
+  o1.addAtIndex(1, 20);
+  cout << o1.get(0) << endl;
+}

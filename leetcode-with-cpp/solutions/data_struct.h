@@ -64,4 +64,30 @@ struct ListNode {
 std::ostream &operator<<(std::ostream &os, const ListNode *t);
 
 }  // namespace MyDataStruct
+
+class MyLinkedList {
+ private:
+  class Node {
+   private:
+   public:
+    int val;
+    Node *next;
+    Node *prev;
+    Node(int val);
+    ~Node();
+  };
+  Node *dummyHead;
+  Node *dummyTail;
+  int size;
+
+ public:
+  MyLinkedList();
+  ~MyLinkedList();
+  int get(int index);
+  void addAtHead(int val);
+  void addAtTail(int val);
+  void addAtIndex(int index, int val);
+  void deleteAtIndex(int index);
+};
+
 #endif

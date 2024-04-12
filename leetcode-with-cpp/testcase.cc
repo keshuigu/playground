@@ -242,3 +242,12 @@ void Test::test_2923() {
   v = {{0, 0, 1}, {1, 0, 1}, {0, 0, 0}};
   cout << Solution().solution_2923(v) << endl;
 }
+
+void Test::test_414() {
+  vector<int> v = {3, 2, 1};
+  cout << Solution().solution_414(v) << endl;
+  v = {1, 2};
+  cout << Solution().solution_414(v) << endl;
+  v = {2, 2, 3, 1};
+  cout << Solution().solution_414(v) << endl;
+}

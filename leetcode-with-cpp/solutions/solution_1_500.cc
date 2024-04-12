@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <set>
 
 #include "my_solution.h"
 #define inf 0x3f3f3f3f
@@ -110,4 +111,15 @@ int Solution::solution_409(string s) {
     }
   }
   return flag ? ans + 1 : ans;
+}
+
+int Solution::solution_414(vector<int>& nums) {
+  set<int> s;
+  for (auto&& num : nums) {
+    s.insert(num);
+    if (s.size() > 3) {
+      s.erase(s.begin());
+    }
+  }
+  return s.size() == 3 ? *s.begin() : *s.rbegin();
 }

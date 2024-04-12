@@ -52,6 +52,7 @@ class Solution {
   int solution_2529(vector<int>& nums);
   int solution_2908(vector<int>& nums);
   string solution_2810(string s);
+  int solution_2923(vector<vector<int>>& grid);
   /* solution 2501 - 3000 */
 };
 }  // namespace MySolution

@@ -235,3 +235,10 @@ void Test::test_707() {
   o1.addAtIndex(1, 20);
   cout << o1.get(0) << endl;
 }
+
+void Test::test_2923() {
+  vector<vector<int>> v = {{0, 1}, {0, 0}};
+  cout << Solution().solution_2923(v) << endl;
+  v = {{0, 0, 1}, {1, 0, 1}, {0, 0, 0}};
+  cout << Solution().solution_2923(v) << endl;
+}

@@ -56,3 +56,13 @@ int Solution::solution_2529(vector<int>& nums) {
   int pos = nums.end() - ranges::upper_bound(nums, 0);
   return max(neg, pos);
 }
+
+int Solution::solution_2923(vector<vector<int>>& grid) {
+  int ans = 0;
+  for (int i = 0; i < grid.size(); i++) {
+    if (grid[i][ans]) {
+      ans = i;
+    }
+  }
+  return ans;
+}

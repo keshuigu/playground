@@ -251,3 +251,10 @@ void Test::test_414() {
   v = {2, 2, 3, 1};
   cout << Solution().solution_414(v) << endl;
 }
+
+void Test::test_2924() {
+  vector<vector<int>> edges = {{0, 1}, {1, 2}};
+  cout << Solution().solution_2924(3, edges) << endl;
+  edges = {{0, 2}, {1, 3}, {1, 2}};
+  cout << Solution().solution_2924(4, edges) << endl;
+}

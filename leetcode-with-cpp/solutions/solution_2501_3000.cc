@@ -66,3 +66,21 @@ int Solution::solution_2923(vector<vector<int>>& grid) {
   }
   return ans;
 }
+
+int Solution::solution_2924(int n, vector<vector<int>>& edges) {
+  vector<int> lose(n, 0);
+  for (auto&& e : edges) {
+    lose[e[1]] = 1;
+  }
+  int ans = -1;
+  for (int i = 0; i < n; i++) {
+    if (lose[i]) {
+      continue;
+    }
+    if (ans != -1) {
+      return -1;
+    }
+    ans = i;
+  }
+  return ans;
+}

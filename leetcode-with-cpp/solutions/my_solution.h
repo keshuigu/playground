@@ -26,6 +26,7 @@ class Solution {
   /* solution 501 - 1000 */
   int solution_704(vector<int>& nums, int target);
   vector<TreeNode*> solution_894(int n);
+  void solution_705();  // data_struct.cc#MyHashSet
   void solution_707();  // data_struct.cc#MyLinkedList
   /* solution 501 - 1000 */
 

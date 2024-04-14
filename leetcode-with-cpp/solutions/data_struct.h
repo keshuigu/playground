@@ -63,8 +63,6 @@ struct ListNode {
 };
 std::ostream &operator<<(std::ostream &os, const ListNode *t);
 
-}  // namespace MyDataStruct
-
 class MyLinkedList {
  private:
   class Node {
@@ -89,5 +87,21 @@ class MyLinkedList {
   void addAtIndex(int index, int val);
   void deleteAtIndex(int index);
 };
+
+class MyHashSet {
+ private:
+  std::vector<int> bs;
+  void setVal(int bucketId, int bitId, int val);
+  int getVal(int bucketId, int bitId);
+
+ public:
+  MyHashSet(/* args */);
+  ~MyHashSet();
+  void add(int key);
+  void remove(int key);
+  bool contains(int key);
+};
+
+}  // namespace MyDataStruct
 
 #endif

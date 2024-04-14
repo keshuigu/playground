@@ -260,3 +260,19 @@ void MyLinkedList::deleteAtIndex(int index) {
   delete cur;
   size--;
 }
+
+MyHashSet::MyHashSet() { bs.resize(40000, 0); }
+MyHashSet::~MyHashSet() {}
+void MyHashSet::setVal(int bucketId, int bitId, int val) {
+  if (val) {
+    bs[bucketId] = bs[bucketId] | (1 << bitId);
+  } else {
+    bs[bucketId] = bs[bucketId] & ~(1 << bitId);
+  }
+}
+int MyHashSet::getVal(int bucketId, int bitId) {
+  return (bs[bucketId] >> bitId) & 1;
+}
+void MyHashSet::add(int key) { setVal(key / 32, key % 32, 1); }
+void MyHashSet::remove(int key) { setVal(key / 32, key % 32, 0); }
+bool MyHashSet::contains(int key) { return getVal(key / 32, key % 32) == 1; }

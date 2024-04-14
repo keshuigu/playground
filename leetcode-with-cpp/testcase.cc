@@ -258,3 +258,16 @@ void Test::test_2924() {
   edges = {{0, 2}, {1, 3}, {1, 2}};
   cout << Solution().solution_2924(4, edges) << endl;
 }
+
+void Test::test_705() {
+  MyHashSet s = MyHashSet();
+
+  s.add(1);
+  s.add(2);
+  cout << s.contains(1) << endl;
+  cout << s.contains(3) << endl;
+  s.add(2);
+  cout << s.contains(2) << endl;
+  s.remove(2);
+  cout << s.contains(2) << endl;
+}

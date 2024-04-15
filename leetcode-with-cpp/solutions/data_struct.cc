@@ -276,3 +276,37 @@ int MyHashSet::getVal(int bucketId, int bitId) {
 void MyHashSet::add(int key) { setVal(key / 32, key % 32, 1); }
 void MyHashSet::remove(int key) { setVal(key / 32, key % 32, 0); }
 bool MyHashSet::contains(int key) { return getVal(key / 32, key % 32) == 1; }
+
+MyHashMap::MyHashMap() {
+  base = 769;
+  bs.resize(base);
+}
+MyHashMap::~MyHashMap() {}
+void MyHashMap::put(int key, int value) {
+  int idx = key % base;
+  for (auto it = bs[idx].begin(); it != bs[idx].end(); it++) {
+    if (it->first == key) {
+      it->second = value;
+      return;
+    }
+  }
+  bs[idx].push_back({key, value});
+}
+int MyHashMap::get(int key) {
+  int idx = key % base;
+  for (auto it = bs[idx].begin(); it != bs[idx].end(); it++) {
+    if (it->first == key) {
+      return it->second;
+    }
+  }
+  return -1;
+}
+void MyHashMap::remove(int key) {
+  int idx = key % base;
+  for (auto it = bs[idx].begin(); it != bs[idx].end(); it++) {
+    if (it->first == key) {
+      bs[idx].erase(it);
+      return;
+    }
+  }
+}

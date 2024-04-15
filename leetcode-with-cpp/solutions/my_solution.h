@@ -28,6 +28,7 @@ class Solution {
   vector<TreeNode*> solution_894(int n);
   void solution_705();  // data_struct.cc#MyHashSet
   void solution_707();  // data_struct.cc#MyLinkedList
+  void solution_706();  // data_struct.cc#MyHashMap
   /* solution 501 - 1000 */
 
   /* solution 1001 - 1500 */

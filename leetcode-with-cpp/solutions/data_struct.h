@@ -1,6 +1,7 @@
 #ifndef DATA_STRUCT_H
 #define DATA_STRUCT_H
 #include <iostream>
+#include <list>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
@@ -100,6 +101,19 @@ class MyHashSet {
   void add(int key);
   void remove(int key);
   bool contains(int key);
+};
+
+class MyHashMap {
+ private:
+  std::vector<std::list<std::pair<int, int>>> bs;
+  int base;
+
+ public:
+  MyHashMap(/* args */);
+  ~MyHashMap();
+  void put(int key, int value);
+  int get(int key);
+  void remove(int key);
 };
 
 }  // namespace MyDataStruct

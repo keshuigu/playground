@@ -271,3 +271,15 @@ void Test::test_705() {
   s.remove(2);
   cout << s.contains(2) << endl;
 }
+
+void Test::test_706() {
+  MyHashMap o = MyHashMap();
+  o.put(1, 1);
+  o.put(2, 2);
+  cout << o.get(1) << endl;
+  cout << o.get(3) << endl;
+  o.put(2, 1);
+  cout << o.get(2) << endl;
+  o.remove(2);
+  cout << o.get(2) << endl;
+}

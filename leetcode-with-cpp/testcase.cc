@@ -283,3 +283,25 @@ void Test::test_706() {
   o.remove(2);
   cout << o.get(2) << endl;
 }
+
+void Test::test_924() {
+  vector<vector<int>> graph = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
+  vector<int> initial = {0, 1};
+  cout << Solution().solution_924(graph, initial) << endl;
+  graph = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
+  initial = {0, 2};
+  cout << Solution().solution_924(graph, initial) << endl;
+  graph = {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}};
+  initial = {1, 2};
+  cout << Solution().solution_924(graph, initial) << endl;
+  graph = {{1, 0, 0, 0}, {0, 1, 1, 0}, {0, 1, 1, 0}, {0, 0, 0, 1}};
+  initial = {1, 3};
+  cout << Solution().solution_924(graph, initial) << endl;
+  graph = {{1, 0, 0, 0, 1, 0, 0, 0, 0, 0}, {0, 1, 1, 0, 0, 0, 0, 0, 0, 0},
+           {0, 1, 1, 0, 0, 1, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+           {1, 0, 0, 0, 1, 0, 0, 0, 0, 0}, {0, 0, 1, 0, 0, 1, 0, 0, 0, 0},
+           {0, 0, 0, 0, 0, 0, 1, 0, 0, 1}, {0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+           {0, 0, 0, 0, 0, 0, 0, 0, 1, 0}, {0, 0, 0, 0, 0, 0, 1, 0, 0, 1}};
+  initial = {1, 3, 0};
+  cout << Solution().solution_924(graph, initial) << endl;
+}

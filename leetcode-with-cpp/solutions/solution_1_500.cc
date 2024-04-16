@@ -4,6 +4,8 @@
 #include "my_solution.h"
 #define inf 0x3f3f3f3f
 using namespace MySolution;
+using std::set;
+using std::unordered_map;
 Solution::Solution(/* args */) {}
 Solution::~Solution() {}
 

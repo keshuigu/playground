@@ -4,6 +4,11 @@
 
 #include "my_solution.h"
 using namespace MySolution;
+using std::deque;
+using std::max;
+using std::min;
+using std::ranges::lower_bound;
+using std::ranges::upper_bound;
 
 int Solution::solution_2908(vector<int>& nums) {
   int n = nums.size();
@@ -52,8 +57,8 @@ string Solution::solution_2810(string s) {
 }
 
 int Solution::solution_2529(vector<int>& nums) {
-  int neg = ranges::lower_bound(nums, 0) - nums.begin();
-  int pos = nums.end() - ranges::upper_bound(nums, 0);
+  int neg = lower_bound(nums, 0) - nums.begin();
+  int pos = nums.end() - upper_bound(nums, 0);
   return max(neg, pos);
 }
 

@@ -5,7 +5,11 @@
 #include "my_solution.h"
 
 using namespace MySolution;
-
+using std::function;
+using std::max;
+using std::unique;
+using std::ranges::fill;
+using std::ranges::sort;
 vector<vector<int>> Solution::solution_2192(int n, vector<vector<int>>& edges) {
   vector<vector<int>> g(n);
   for (auto&& e : edges) {
@@ -22,7 +26,7 @@ vector<vector<int>> Solution::solution_2192(int n, vector<vector<int>>& edges) {
     }
   };
   for (int i = 0; i < n; i++) {
-    ranges::fill(vis, false);
+    fill(vis, false);
     dfs(i);
     vis[i] = false;
     for (int j = 0; j < n; j++) {
@@ -37,7 +41,7 @@ vector<vector<int>> Solution::solution_2192(int n, vector<vector<int>>& edges) {
 int Solution::solution_2009(vector<int>& nums) {
   int n = nums.size();
   int j = 1;
-  ranges::sort(nums);
+  sort(nums);
   // for (int i = 1; i < n; i++) {
   //   if (nums[i] != nums[i - 1]) {
   //     nums[j++] = nums[i];

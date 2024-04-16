@@ -1,7 +1,12 @@
+#include <algorithm>
+#include <functional>
 #include <unordered_map>
 
 #include "my_solution.h"
 using namespace MySolution;
+using std::function;
+using std::sort;
+using std::unordered_map;
 int Solution::solution_704(vector<int>& nums, int target) {
   int left = -1, right = nums.size();
   while (left + 1 < right) {
@@ -31,4 +36,63 @@ vector<TreeNode*> Solution::solution_894(int n) {
     }
   }
   return f[n % 2 ? (n + 1) / 2 : 0];
+}
+
+int Solution::solution_924(vector<vector<int>>& graph, vector<int>& initial) {
+  int n = graph.size();
+  vector<int> fa(n);
+  for (int i = 0; i < n; i++) {
+    fa[i] = i;
+  }
+
+  sort(initial.begin(), initial.end());
+  function<int(int)> find = [&fa, &find](int x) -> int {
+    if (fa[x] != x) {
+      fa[x] = find(fa[x]);
+    }
+    return fa[x];
+  };
+
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      if (graph[i][j]) {
+        int x = find(i);
+        int y = find(j);
+        if (x != y) {
+          fa[x] = y;
+        }
+      }
+    }
+  }
+  unordered_map<int, int> cnt;
+  for (int i = 0; i < n; i++) {
+    int x = find(i);
+    if (cnt.contains(x)) {
+      cnt[x] = cnt[x] + 1;
+    } else {
+      cnt[x] = 1;
+    }
+  }
+  unordered_map<int, int> m;
+  for (vector<int>::iterator it = initial.begin(); it != initial.end(); ++it) {
+    int x = find(*it);
+    if (cnt.contains(x)) {
+      m[x] = m[x] + 1;
+    } else {
+      m[x] = 1;
+    }
+  }
+  int survived = 0;
+  int idx = initial[0];
+  for (vector<int>::iterator it = initial.begin(); it != initial.end(); it++) {
+    int x = find(*it);
+    if (m[x] == 1) {
+      int cur = cnt[find(x)];
+      if (survived < cur) {
+        survived = cur;
+        idx = *it;
+      }
+    }
+  }
+  return idx;
 }

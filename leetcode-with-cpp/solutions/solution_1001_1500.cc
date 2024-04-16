@@ -4,7 +4,11 @@
 
 #include "my_solution.h"
 using namespace MySolution;
-
+using std::function;
+using std::max;
+using std::min;
+using std::multiset;
+using std::pair;
 int Solution::solution_1004(vector<int>& nums, int k) {
   int left = 0, ans = 0, cnt = 0;
   for (int i = 0; i < nums.size(); i++) {

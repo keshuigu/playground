@@ -4,7 +4,9 @@
 
 #include "my_solution.h"
 using namespace MySolution;
-
+using std::function;
+using std::gcd;
+using std::pair;
 string Solution::solution_1702(string binary) {
   int i = binary.find('0');
   if (i < 0) {

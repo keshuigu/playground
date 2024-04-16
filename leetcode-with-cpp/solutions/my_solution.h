@@ -4,8 +4,10 @@
 #include <vector>
 
 #include "data_struct.h"
-using namespace MyDataStruct;
-using namespace std;
+using MyDataStruct::ListNode;
+using MyDataStruct::TreeNode;
+using std::string;
+using std::vector;
 namespace MySolution {
 class Solution {
  private:
@@ -29,6 +31,7 @@ class Solution {
   void solution_705();  // data_struct.cc#MyHashSet
   void solution_707();  // data_struct.cc#MyLinkedList
   void solution_706();  // data_struct.cc#MyHashMap
+  int solution_924(vector<vector<int>>& graph, vector<int>& initial);
   /* solution 501 - 1000 */
 
   /* solution 1001 - 1500 */

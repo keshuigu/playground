@@ -33,6 +33,7 @@ class Test {
   void test_705();
   void test_706();
   void test_924();
+  void test_928();
 };
 
 }  // namespace Testcase

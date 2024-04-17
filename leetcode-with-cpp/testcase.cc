@@ -305,3 +305,15 @@ void Test::test_924() {
   initial = {1, 3, 0};
   cout << Solution().solution_924(graph, initial) << endl;
 }
+
+void Test::test_928() {
+  vector<vector<int>> graph = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
+  vector<int> initial = {0, 1};
+  cout << Solution().solution_928(graph, initial) << endl;
+  graph = {{1, 1, 0}, {1, 1, 1}, {0, 1, 1}};
+  initial = {0, 1};
+  cout << Solution().solution_928(graph, initial) << endl;
+  graph = {{1, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 1, 1}, {0, 0, 1, 1}};
+  initial = {0, 1};
+  cout << Solution().solution_928(graph, initial) << endl;
+}

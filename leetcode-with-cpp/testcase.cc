@@ -317,3 +317,10 @@ void Test::test_928() {
   initial = {0, 1};
   cout << Solution().solution_928(graph, initial) << endl;
 }
+
+void Test::test_415() {
+  cout << Solution().solution_415("11", "123") << endl;
+  cout << Solution().solution_415("456", "77") << endl;
+  cout << Solution().solution_415("0", "0") << endl;
+  cout << Solution().solution_415("10", "90") << endl;
+}

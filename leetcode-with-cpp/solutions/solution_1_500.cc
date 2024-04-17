@@ -4,7 +4,9 @@
 #include "my_solution.h"
 #define inf 0x3f3f3f3f
 using namespace MySolution;
+using std::reverse;
 using std::set;
+using std::swap;
 using std::unordered_map;
 Solution::Solution(/* args */) {}
 Solution::~Solution() {}
@@ -124,4 +126,42 @@ int Solution::solution_414(vector<int>& nums) {
     }
   }
   return s.size() == 3 ? *s.begin() : *s.rbegin();
+}
+
+string Solution::solution_415(string num1, string num2) {
+  reverse(num1.begin(), num1.end());
+  reverse(num2.begin(), num2.end());
+  if (num1.size() < num2.size()) {
+    swap(num1, num2);
+  }
+  int c = 0;
+  int a, b, cur;
+  for (int i = 0; i < num2.size(); i++) {
+    a = num1[i] - '0';
+    b = num2[i] - '0';
+    cur = a + b + c;
+    if (cur >= 10) {
+      cur -= 10;
+      c = 1;
+    } else {
+      c = 0;
+    }
+    num1[i] = '0' + cur;
+  }
+  for (int i = num2.size(); i < num1.size(); i++) {
+    a = num1[i] - '0';
+    cur = a + c;
+    if (cur >= 10) {
+      cur -= 10;
+      c = 1;
+    } else {
+      c = 0;
+    }
+    num1[i] = '0' + cur;
+  }
+  if (c == 1) {
+    num1.push_back('1');
+  }
+  reverse(num1.begin(), num1.end());
+  return num1;
 }

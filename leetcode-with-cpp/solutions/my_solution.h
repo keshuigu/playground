@@ -23,6 +23,7 @@ class Solution {
   ListNode* solution_203(ListNode* head, int val);
   int solution_409(string s);
   int solution_414(vector<int>& nums);
+  string solution_415(string num1, string num2);
   /* solution 1 - 500 */
 
   /* solution 501 - 1000 */

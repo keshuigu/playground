@@ -1,13 +1,17 @@
 #include <algorithm>
 #include <functional>
 #include <ranges>
+#include <set>
+#include <unordered_map>
 
 #include "my_solution.h"
 
 using namespace MySolution;
 using std::function;
 using std::max;
+using std::multiset;
 using std::unique;
+using std::unordered_map;
 using std::ranges::fill;
 using std::ranges::sort;
 vector<vector<int>> Solution::solution_2192(int n, vector<vector<int>>& edges) {
@@ -56,4 +60,88 @@ int Solution::solution_2009(vector<int>& nums) {
     ans = max(ans, i - left + 1);
   }
   return n - ans;
+}
+
+vector<int> Solution::solution_2007(vector<int>& changed) {
+  // TLE
+  // vector<int> ans;
+  // if (changed.size() % 2 == 1) {
+  //   return ans;
+  // }
+  // multiset<int> s;
+  // for (auto&& i : changed) {
+  //   s.insert(i);
+  // }
+  // int cnt = changed.size() / 2;
+  // while (cnt > 0) {
+  //   int cur = *s.begin();
+  //   if ((cur == 0 && s.count(0) >= 2) || (cur != 0 && s.count(cur * 2) > 0))
+  //   {
+  //     s.erase(s.begin());
+  //     s.erase(s.find(cur * 2));
+  //     ans.push_back(cur);
+  //     cnt--;
+  //   } else {
+  //     return vector<int>();
+  //   }
+  // }
+  // return ans;
+  if (changed.size() % 2 == 1) {
+    return vector<int>();
+  }
+  unordered_map<int, int> m;
+  for (auto&& num : changed) {
+    if (m.contains(num)) {
+      m[num] += 1;
+    } else {
+      m[num] = 1;
+    }
+  }
+  vector<int> ans;
+  sort(changed.begin(), changed.end());
+  for (auto&& num : changed) {
+    if (num == 0 && m[0] >= 2) {
+      m[0] -= 2;
+      ans.push_back(0);
+    } else if (num != 0 && m.contains(num * 2) && m[num] > 0 &&
+               m[num * 2] > 0) {
+      m[num] -= 1;
+      m[num * 2] -= 1;
+      ans.push_back(num);
+    }
+  }
+  return ans.size() == changed.size() / 2 ? ans : vector<int>();
+}
+
+vector<int> Solution::solution_2007_2(vector<int>& changed) {
+  unordered_map<int, int> cnt;
+  for (auto&& x : changed) {
+    cnt[x]++;
+  }
+  int cnt0 = cnt[0];
+  if (cnt0 % 2) {
+    return {};
+  }
+  cnt.erase(0);
+  vector<int> ans(cnt0 / 2);
+  for (auto&& [key, _] : cnt) {
+    int x = key;
+    if (x % 2 == 0 && cnt.contains(x / 2)) {
+      continue;
+    }
+    while (cnt.contains(x)) {
+      int cnt_x = cnt[x];
+      if (cnt_x > cnt[x * 2]) {
+        return {};
+      }
+      ans.insert(ans.end(), cnt_x, x);
+      if (cnt_x < cnt[x * 2]) {
+        cnt[x * 2] -= cnt_x;
+        x *= 2;
+      } else {
+        x *= 4;
+      }
+    }
+  }
+  return ans;
 }

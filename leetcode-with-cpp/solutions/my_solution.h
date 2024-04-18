@@ -52,6 +52,8 @@ class Solution {
   /* solution 1501 - 2000 */
 
   /* solution 2001 - 2500 */
+  vector<int> solution_2007(vector<int>& changed);
+  vector<int> solution_2007_2(vector<int>& changed);
   int solution_2009(vector<int>& nums);
   vector<vector<int>> solution_2192(int n, vector<vector<int>>& edges);
   /* solution 2001 - 2500 */

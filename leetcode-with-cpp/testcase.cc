@@ -324,3 +324,51 @@ void Test::test_415() {
   cout << Solution().solution_415("0", "0") << endl;
   cout << Solution().solution_415("10", "90") << endl;
 }
+
+void Test::test_2007() {
+  vector<int> v = {4, 4, 16, 20, 8, 8, 2, 10};
+  for (auto &&i : Solution().solution_2007(v)) {
+    cout << i;
+  }
+  cout << endl;
+  v = {1, 3, 4, 2, 6, 8};
+
+  for (auto &&i : Solution().solution_2007(v)) {
+    cout << i;
+  }
+  cout << endl;
+  v = {6, 3, 0, 1};
+  for (auto &&i : Solution().solution_2007(v)) {
+    cout << i;
+  }
+  cout << endl;
+  v = {1};
+  for (auto &&i : Solution().solution_2007(v)) {
+    cout << i;
+  }
+  cout << endl;
+}
+
+void Test::test_2007_2() {
+  vector<int> v = {4, 4, 16, 20, 8, 8, 2, 10};
+  for (auto &&i : Solution().solution_2007_2(v)) {
+    cout << i;
+  }
+  cout << endl;
+  v = {1, 3, 4, 2, 6, 8};
+
+  for (auto &&i : Solution().solution_2007_2(v)) {
+    cout << i;
+  }
+  cout << endl;
+  v = {6, 3, 0, 1};
+  for (auto &&i : Solution().solution_2007_2(v)) {
+    cout << i;
+  }
+  cout << endl;
+  v = {1};
+  for (auto &&i : Solution().solution_2007_2(v)) {
+    cout << i;
+  }
+  cout << endl;
+}

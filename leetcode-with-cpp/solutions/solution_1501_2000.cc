@@ -4,8 +4,10 @@
 
 #include "my_solution.h"
 using namespace MySolution;
+using std::accumulate;
 using std::function;
 using std::gcd;
+using std::min;
 using std::pair;
 string Solution::solution_1702(string binary) {
   int i = binary.find('0');
@@ -61,4 +63,28 @@ vector<int> Solution::solution_1766(vector<int>& nums,
 
   dfs(0, -1, 1);
   return ans;
+}
+
+int Solution::solution_1883(vector<int>& dist, int speed, int hoursBefore) {
+  if (accumulate(dist.begin(), dist.end(), 0) >
+      (long long)speed * hoursBefore) {
+    return -1;
+  }
+
+  vector<int> f(dist.size(), 0);
+  for (int i = 0;; i++) {
+    int pre = 0;
+    for (int j = 0; j < dist.size() - 1; j++) {
+      int tmp = f[j + 1];
+      f[j + 1] = (f[j] + dist[j] + speed - 1) / speed * speed;
+      if (i > 0) {
+        f[j + 1] = min(f[j + 1], pre + dist[j]);
+      }
+      pre = tmp;
+    }
+    if (f[f.size() - 1] + dist[dist.size() - 1] <=
+        (long long)hoursBefore * speed) {
+      return i;
+    }
+  }
 }

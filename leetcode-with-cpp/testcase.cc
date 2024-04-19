@@ -372,3 +372,12 @@ void Test::test_2007_2() {
   }
   cout << endl;
 }
+
+void Test::test_1883() {
+  vector<int> dist = {1, 3, 2};
+  cout << Solution().solution_1883(dist, 4, 2) << endl;
+  dist = {7, 3, 5, 5};
+  cout << Solution().solution_1883(dist, 2, 10) << endl;
+  dist = {7, 3, 5, 5};
+  cout << Solution().solution_1883(dist, 1, 10) << endl;
+}

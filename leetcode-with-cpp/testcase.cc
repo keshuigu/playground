@@ -381,3 +381,38 @@ void Test::test_1883() {
   dist = {7, 3, 5, 5};
   cout << Solution().solution_1883(dist, 1, 10) << endl;
 }
+
+void Test::test_39() {
+  vector<int> candidates = {2, 3, 6, 7};
+  vector<vector<int>> ans = Solution().solution_39(candidates, 7);
+  for (auto &&i : ans) {
+    cout << '[';
+    for (auto &&j : i) {
+      cout << j << ' ';
+    }
+    cout << ']';
+  }
+  cout << endl;
+
+  candidates = {2, 3, 5};
+  ans = Solution().solution_39(candidates, 8);
+  for (auto &&i : ans) {
+    cout << '[';
+    for (auto &&j : i) {
+      cout << j << ' ';
+    }
+    cout << ']';
+  }
+  cout << endl;
+
+  candidates = {2};
+  ans = Solution().solution_39(candidates, 1);
+  for (auto &&i : ans) {
+    cout << '[';
+    for (auto &&j : i) {
+      cout << j << ' ';
+    }
+    cout << ']';
+  }
+  cout << endl;
+}

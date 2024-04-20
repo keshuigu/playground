@@ -1,13 +1,18 @@
 #include <algorithm>
+#include <functional>
+#include <iostream>
 #include <set>
 
 #include "my_solution.h"
 #define inf 0x3f3f3f3f
 using namespace MySolution;
+using std::cout;
+using std::function;
 using std::reverse;
 using std::set;
 using std::swap;
 using std::unordered_map;
+
 Solution::Solution(/* args */) {}
 Solution::~Solution() {}
 
@@ -164,4 +169,53 @@ string Solution::solution_415(string num1, string num2) {
   }
   reverse(num1.begin(), num1.end());
   return num1;
+}
+
+vector<vector<int>> Solution::solution_39(vector<int>& candidates, int target) {
+  function<vector<vector<int>>(int, int)> dfs =
+      [&](int i, int res) -> vector<vector<int>> {
+    if (res == 0) {
+      return vector<vector<int>>(1);
+    }
+    if (i == candidates.size()) {
+      return vector<vector<int>>();
+    }
+
+    vector<vector<int>> ans;
+    for (int j = 0; j <= res; j = j + candidates[i]) {
+      vector<vector<int>> p = dfs(i + 1, res - j);
+      vector<int> tmp(j / candidates[i], candidates[i]);
+      for (auto&& t : p) {
+        vector<int> combined = tmp;
+        combined.insert(combined.end(), t.begin(), t.end());
+        ans.push_back(combined);
+      }
+    }
+    return ans;
+  };
+  // 优化的写法
+  // path 维护当前走选过的数字
+  // vector<vector<int>> ans;
+  // vector<int> path;
+  // function<void(int, int)> dfs = [&](int i, int left) {
+  //   if (left == 0) {
+  //     // 找到一个合法组合
+  //     ans.push_back(path);
+  //     return;
+  //   }
+
+  //   if (i == candidates.size() || left < 0) {
+  //     return;
+  //   }
+
+  //   // 不选
+  //   dfs(i + 1, left);
+
+  //   // 选
+  //   path.push_back(candidates[i]);
+  //   dfs(i, left - candidates[i]);
+  //   path.pop_back();  // 恢复现场
+  // };
+
+  return dfs(0, target);
 }

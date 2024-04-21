@@ -416,3 +416,34 @@ void Test::test_39() {
   }
   cout << endl;
 }
+
+void Test::test_216() {
+  vector<vector<int>> ans = Solution().solution_216(3, 7);
+  for (auto &&i : ans) {
+    cout << '[';
+    for (auto &&j : i) {
+      cout << j << ' ';
+    }
+    cout << ']';
+  }
+  cout << endl;
+
+  ans = Solution().solution_216(3, 9);
+  for (auto &&i : ans) {
+    cout << '[';
+    for (auto &&j : i) {
+      cout << j << ' ';
+    }
+    cout << ']';
+  }
+  cout << endl;
+  ans = Solution().solution_216(4, 1);
+  for (auto &&i : ans) {
+    cout << '[';
+    for (auto &&j : i) {
+      cout << j << ' ';
+    }
+    cout << ']';
+  }
+  cout << endl;
+}

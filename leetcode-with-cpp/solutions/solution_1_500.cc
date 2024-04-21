@@ -219,3 +219,28 @@ vector<vector<int>> Solution::solution_39(vector<int>& candidates, int target) {
 
   return dfs(0, target);
 }
+
+vector<vector<int>> Solution::solution_216(int k, int n) {
+  vector<vector<int>> ans;
+  vector<int> path;
+
+  function<void(int, int, int)> dfs = [&](int i, int j, int cur) {
+    if (cur > n or j > k) {
+      return;
+    }
+    if (cur == n and j == k) {
+      ans.push_back(path);
+      return;
+    }
+    if (i > 9) {
+      return;
+    }
+    path.push_back(i);
+    dfs(i + 1, j + 1, cur + i);
+    path.pop_back();
+
+    dfs(i + 1, j, cur);
+  };
+  dfs(1, 0, 0);
+  return ans;
+}

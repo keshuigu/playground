@@ -447,3 +447,10 @@ void Test::test_216() {
   }
   cout << endl;
 }
+
+void Test::test_377() {
+  vector<int> nums = {1, 2, 3};
+  cout << Solution().solution_377(nums, 4) << endl;
+  nums = {9};
+  cout << Solution().solution_377(nums, 3) << endl;
+}

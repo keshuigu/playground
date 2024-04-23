@@ -70,3 +70,24 @@ int Solution::solution_1026_2(TreeNode* root) {
   dfs(root);
   return ans;
 }
+
+int Solution::solution_1052(vector<int>& customers, vector<int>& grumpy,
+                            int minutes) {
+  int ans0 = 0;
+  for (int i = 0; i < customers.size(); i++) {
+    if (grumpy[i] == 0) {
+      ans0 += customers[i];
+      customers[i] = 0;
+    }
+  }
+  int ans1 = 0, cur = 0;
+  for (int right = 0; right < customers.size(); right++) {
+    cur += customers[right];
+    ans1 = max(ans1, cur);
+    if (right < minutes - 1) {
+      continue;
+    }
+    cur -= customers[right - minutes + 1];
+  }
+  return ans0 + ans1;
+}

@@ -454,3 +454,12 @@ void Test::test_377() {
   nums = {9};
   cout << Solution().solution_377(nums, 3) << endl;
 }
+
+void Test::test_1052() {
+  vector<int> customers = {1, 0, 1, 2, 1, 1, 7, 5};
+  vector<int> grumpy = {0, 1, 0, 1, 0, 1, 0, 1};
+  cout << Solution().solution_1052(customers, grumpy, 3) << endl;
+  customers = {1};
+  grumpy = {0};
+  cout << Solution().solution_1052(customers, grumpy, 1) << endl;
+}

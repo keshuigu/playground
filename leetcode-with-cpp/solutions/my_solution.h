@@ -46,6 +46,7 @@ class Solution {
   int solution_1026(TreeNode* root);
   int solution_1026_2(TreeNode* root);
   void solution_1483();  // data_struct.cc#TreeAncestor
+  int solution_1052(vector<int>& customers, vector<int>& grumpy, int minutes);
   /* solution 1001 - 1500 */
 
   /* solution 1501 - 2000 */

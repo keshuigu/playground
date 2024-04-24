@@ -42,6 +42,7 @@ class Test {
   void test_216();
   void test_377();
   void test_1052();
+  void test_2385();
 };
 
 }  // namespace Testcase

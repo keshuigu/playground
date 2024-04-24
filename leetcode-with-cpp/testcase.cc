@@ -463,3 +463,10 @@ void Test::test_1052() {
   grumpy = {0};
   cout << Solution().solution_1052(customers, grumpy, 1) << endl;
 }
+
+void Test::test_2385() {
+  TreeNode *root = construct_binary_tree({1, 5, 3, -1, 4, 10, 6, -1, -1, 9, 2});
+  cout << Solution().solution_2385(root, 3) << endl;
+  root = new TreeNode(1);
+  cout << Solution().solution_2385(root, 1) << endl;
+}

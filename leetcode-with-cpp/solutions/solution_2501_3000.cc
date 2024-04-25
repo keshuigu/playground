@@ -92,39 +92,7 @@ int Solution::solution_2924(int n, vector<vector<int>>& edges) {
   }
   return ans;
 }
-int Solution::solution_2385(TreeNode* root, int start) {
-  TreeNode* fa[100001];
-  TreeNode* start_node;
-  function<void(TreeNode*, TreeNode*)> dfs = [&](TreeNode* node,
-                                                 TreeNode* from) {
-    if (node == nullptr) {
-      return;
-    }
-    fa[node->val] = from;
-    if (node->val == start) {
-      start_node = node;
-    }
-    dfs(node->left, node);
-    dfs(node->right, node);
-  };
-  function<int(TreeNode*, TreeNode*)> maxDepth = [&](TreeNode* node,
-                                                     TreeNode* from) -> int {
-    if (node == nullptr) {
-      return -1;
-    }
-    int res = -1;
-    if (node->left != from) {
-      res = max(res, maxDepth(node->left, node));
-    }
-    if (node->right != from) {
-      res = max(res, maxDepth(node->right, node));
-    }
-    if (fa[node->val] != from) {
-      res = max(res, maxDepth(fa[node->val], node));
-    }
-    return res + 1;
-  };
 
-  dfs(root, nullptr);
-  return maxDepth(start_node, start_node);
+int Solution::solution_2739(int mainTank, int additionalTank) {
+  return (mainTank + min((mainTank - 1) / 4, additionalTank)) * 10;
 }

@@ -470,3 +470,8 @@ void Test::test_2385() {
   root = new TreeNode(1);
   cout << Solution().solution_2385(root, 1) << endl;
 }
+
+void Test::test_2739() {
+  cout << Solution().solution_2739(5, 10) << endl;
+  cout << Solution().solution_2739(1, 2) << endl;
+}

@@ -475,3 +475,11 @@ void Test::test_2739() {
   cout << Solution().solution_2739(5, 10) << endl;
   cout << Solution().solution_2739(1, 2) << endl;
 }
+
+void Test::test_1146() {
+  auto o = SnapshotArray(3);
+  o.set(0, 5);
+  o.snap();
+  o.set(0, 6);
+  cout << o.get(0, 0) << endl;
+}

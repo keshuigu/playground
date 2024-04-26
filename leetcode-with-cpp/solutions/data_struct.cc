@@ -1,8 +1,10 @@
 
 #include "data_struct.h"
 
+#include <algorithm>
 #include <functional>
 #include <queue>
+#include <ranges>
 #include <utility>
 using namespace MyDataStruct;
 using namespace std;
@@ -309,4 +311,10 @@ void MyHashMap::remove(int key) {
       return;
     }
   }
+}
+
+int SnapshotArray::get(int index, int snap_id) {
+  auto &h = hitory_[index];
+  int j = ranges::lower_bound(h, make_pair(snap_id + 1, 0)) - h.begin() - 1;
+  return j >= 0 ? h[j].second : 0;
 }

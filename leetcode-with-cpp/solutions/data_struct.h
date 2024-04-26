@@ -115,7 +115,23 @@ class MyHashMap {
   int get(int key);
   void remove(int key);
 };
+class SnapshotArray {
+ public:
+  inline SnapshotArray(int length) {}
 
+  inline void set(int index, int val) {
+    hitory_[index].emplace_back(cur_, val);
+  }
+
+  inline int snap() { return cur_++; }
+
+  int get(int index, int snap_id);
+
+ private:
+  int cur_ = 0;
+  // 每个index的历史修改记录
+  std::unordered_map<int, std::vector<std ::pair<int, int>>> hitory_;
+};
 }  // namespace MyDataStruct
 
 #endif

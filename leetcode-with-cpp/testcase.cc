@@ -483,3 +483,19 @@ void Test::test_1146() {
   o.set(0, 6);
   cout << o.get(0, 0) << endl;
 }
+
+void Test::test_2639() {
+  vector<vector<int>> grid = {{1}, {22}, {333}};
+  vector<int> ans = Solution().solution_2639(grid);
+  for (auto &&i : ans) {
+    cout << i;
+  }
+  cout << endl;
+
+  grid = {{-15, 1, 3}, {15, 7, 12}, {5, 6, -2}};
+  ans = Solution().solution_2639(grid);
+  for (auto &&i : ans) {
+    cout << i;
+  }
+  cout << endl;
+}

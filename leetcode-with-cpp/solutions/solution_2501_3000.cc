@@ -2,6 +2,7 @@
 #include <deque>
 #include <functional>
 #include <ranges>
+#include <string>
 #include <unordered_map>
 
 #include "my_solution.h"
@@ -10,6 +11,7 @@ using std::deque;
 using std::function;
 using std::max;
 using std::min;
+using std::to_string;
 using std::unordered_map;
 using std::ranges::lower_bound;
 using std::ranges::upper_bound;
@@ -95,4 +97,14 @@ int Solution::solution_2924(int n, vector<vector<int>>& edges) {
 
 int Solution::solution_2739(int mainTank, int additionalTank) {
   return (mainTank + min((mainTank - 1) / 4, additionalTank)) * 10;
+}
+
+vector<int> Solution::solution_2639(vector<vector<int>>& grid) {
+  vector<int> ans(grid[0].size(), 0);
+  for (int i = 0; i < grid.size(); i++) {
+    for (int j = 0; j < grid[i].size(); j++) {
+      ans[j] = max(ans[j], static_cast<int>(to_string(grid[i][j]).size()));
+    }
+  }
+  return ans;
 }

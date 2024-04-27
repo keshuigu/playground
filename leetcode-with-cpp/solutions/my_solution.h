@@ -72,6 +72,7 @@ class Solution {
   int solution_2923(vector<vector<int>>& grid);
   int solution_2924(int n, vector<vector<int>>& edges);
   int solution_2739(int mainTank, int additionalTank);
+  vector<int> solution_2639(vector<vector<int>>& grid);
   /* solution 2501 - 3000 */
 };
 }  // namespace MySolution

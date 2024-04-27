@@ -1,5 +1,5 @@
 > [论文原文](https://arxiv.org/abs/1701.07875)
-> 
+>
 > [令人拍案叫绝的Wasserstein GAN](https://zhuanlan.zhihu.com/p/25071913)
 
 ## 文章概括

@@ -499,3 +499,11 @@ void Test::test_2639() {
   }
   cout << endl;
 }
+
+void Test::test_2798() {
+  vector<int> grid = {0, 1, 2, 3, 4};
+  cout << Solution().solution_2798(grid, 2);
+
+  grid = {5, 1, 4, 2, 2};
+  cout << Solution().solution_2798(grid, 6);
+}

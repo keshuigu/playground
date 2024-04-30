@@ -108,3 +108,13 @@ vector<int> Solution::solution_2639(vector<vector<int>>& grid) {
   }
   return ans;
 }
+
+int Solution::solution_2798(vector<int>& hours, int target) {
+  int ans = 0;
+  for (auto&& num : hours) {
+    if (num >= target) {
+      ans++;
+    }
+  }
+  return ans;
+}

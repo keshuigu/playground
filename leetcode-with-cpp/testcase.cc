@@ -507,3 +507,12 @@ void Test::test_2798() {
   grid = {5, 1, 4, 2, 2};
   cout << Solution().solution_2798(grid, 6);
 }
+
+void Test::test_857() {
+  vector<int> quality = {10, 20, 5};
+  vector<int> wage = {70, 50, 30};
+  cout << Solution().solution_857(quality, wage, 2) << endl;
+  quality = {3, 1, 10, 10, 1};
+  wage = {4, 8, 2, 2, 7};
+  cout << Solution().solution_857(quality, wage, 3) << endl;
+}

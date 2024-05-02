@@ -1,12 +1,18 @@
 #include <algorithm>
 #include <functional>
+#include <queue>
 #include <unordered_map>
 #include <unordered_set>
+#include <utility>
 
 #include "my_solution.h"
 using namespace MySolution;
 using std::function;
+using std::make_pair;
+using std::min;
 using std::min_element;
+using std::pair;
+using std::priority_queue;
 using std::sort;
 using std::unordered_map;
 using std::unordered_set;
@@ -143,4 +149,37 @@ int Solution::solution_928(vector<vector<int>>& graph, vector<int>& initial) {
   }
   return cnt.empty() ? *min_element(initial.begin(), initial.end())
                      : min_node_id;
+}
+
+double Solution::solution_857(vector<int>& quality, vector<int>& wage, int k) {
+  int n = quality.size();
+  vector<pair<int, int>> pairs(n);
+  for (int i = 0; i < n; i++) {
+    pairs[i] = make_pair(quality[i], wage[i]);
+  }
+  std::sort(
+      pairs.begin(), pairs.end(),
+      [](const pair<int, int>& a, const pair<int, int>& b) {
+        return (static_cast<double>(a.second) / static_cast<double>(a.first)) <
+               (static_cast<double>(b.second) / static_cast<double>(b.first));
+      });
+  priority_queue<int> pq;
+  int sum_q = 0;
+  for (int i = 0; i < k; i++) {
+    pq.push(pairs[i].first);
+    sum_q += pairs[i].first;
+  }
+  double ans = sum_q * (static_cast<double>(pairs[k - 1].second) /
+                        static_cast<double>(pairs[k - 1].first));
+  for (int i = k; i < n; i++) {
+    int q = pairs[i].first;
+    if (q < pq.top()) {
+      sum_q -= pq.top() - q;
+      pq.pop();
+      pq.push(q);
+      ans = min(ans, sum_q * (static_cast<double>(pairs[i].second) /
+                              static_cast<double>(pairs[i].first)));
+    }
+  }
+  return ans;
 }

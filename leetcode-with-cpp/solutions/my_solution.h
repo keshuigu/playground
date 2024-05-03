@@ -49,6 +49,7 @@ class Solution {
   void solution_1483();  // data_struct.cc#TreeAncestor
   int solution_1052(vector<int>& customers, vector<int>& grumpy, int minutes);
   void solution_1146();  // data_struct.cc#SnapshotArray
+  double solution_1491(vector<int>& salary);
   /* solution 1001 - 1500 */
 
   /* solution 1501 - 2000 */

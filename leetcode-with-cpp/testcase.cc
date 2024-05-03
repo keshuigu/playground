@@ -516,3 +516,14 @@ void Test::test_857() {
   wage = {4, 8, 2, 2, 7};
   cout << Solution().solution_857(quality, wage, 3) << endl;
 }
+
+void Test::test_1491() {
+  vector<int> salary = {4000, 3000, 1000, 2000};
+  cout << Solution().solution_1491(salary) << endl;
+  salary = {1000, 2000, 3000};
+  cout << Solution().solution_1491(salary) << endl;
+  salary = {6000, 5000, 4000, 3000, 2000, 1000};
+  cout << Solution().solution_1491(salary) << endl;
+  salary = {8000, 9000, 2000, 3000, 6000, 1000};
+  cout << Solution().solution_1491(salary) << endl;
+}

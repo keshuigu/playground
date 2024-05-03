@@ -1,12 +1,18 @@
+#include <algorithm>
 #include <climits>
 #include <functional>
+#include <numeric>
 #include <set>
 
 #include "my_solution.h"
 using namespace MySolution;
+using std::accumulate;
 using std::function;
 using std::max;
+using std::max_element;
 using std::min;
+using std::min_element;
+using std::minmax_element;
 using std::multiset;
 using std::pair;
 int Solution::solution_1004(vector<int>& nums, int k) {
@@ -90,4 +96,14 @@ int Solution::solution_1052(vector<int>& customers, vector<int>& grumpy,
     cur -= customers[right - minutes + 1];
   }
   return ans0 + ans1;
+}
+
+double Solution::solution_1491(vector<int>& salary) {
+  // int mn = *min_element(salary.begin(), salary.end());
+  // int mx = *max_element(salary.begin(), salary.end());
+  auto [mn_it, mx_it] = minmax_element(salary.begin(), salary.end());
+  int mn = *mn_it, mx = *mx_it;
+  return (static_cast<double>(accumulate(salary.begin(), salary.end(), 0) - mn -
+                              mx) /
+          (static_cast<double>(salary.size() - 2)));
 }

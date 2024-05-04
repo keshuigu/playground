@@ -527,3 +527,18 @@ void Test::test_1491() {
   salary = {8000, 9000, 2000, 3000, 6000, 1000};
   cout << Solution().solution_1491(salary) << endl;
 }
+
+void Test::test_1235() {
+  vector<int> startTime = {1, 2, 3, 3};
+  vector<int> endTime = {3, 4, 5, 6};
+  vector<int> profit = {50, 10, 40, 70};
+  cout << Solution().solution_1235(startTime, endTime, profit) << endl;
+  startTime = {1, 2, 3, 4, 6};
+  endTime = {3, 5, 10, 6, 9};
+  profit = {20, 20, 100, 70, 60};
+  cout << Solution().solution_1235(startTime, endTime, profit) << endl;
+  startTime = {1, 1, 1};
+  endTime = {2, 3, 4};
+  profit = {5, 6, 4};
+  cout << Solution().solution_1235(startTime, endTime, profit) << endl;
+}

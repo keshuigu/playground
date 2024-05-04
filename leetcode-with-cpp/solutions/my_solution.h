@@ -50,6 +50,8 @@ class Solution {
   int solution_1052(vector<int>& customers, vector<int>& grumpy, int minutes);
   void solution_1146();  // data_struct.cc#SnapshotArray
   double solution_1491(vector<int>& salary);
+  int solution_1235(vector<int>& startTime, vector<int>& endTime,
+                    vector<int>& profit);
   /* solution 1001 - 1500 */
 
   /* solution 1501 - 2000 */

@@ -542,3 +542,25 @@ void Test::test_1235() {
   profit = {5, 6, 4};
   cout << Solution().solution_1235(startTime, endTime, profit) << endl;
 }
+
+void Test::test_1652() {
+  vector<int> code = {5, 7, 1, 4};
+  vector<int> ans;
+  ans = Solution().solution_1652(code, 3);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+  code = {1, 2, 3, 4};
+  ans = Solution().solution_1652(code, 0);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+  code = {2, 4, 9, 3};
+  ans = Solution().solution_1652(code, -2);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+}

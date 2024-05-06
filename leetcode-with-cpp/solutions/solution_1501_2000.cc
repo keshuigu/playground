@@ -1,14 +1,18 @@
+#include <stdlib.h>
+
 #include <functional>
 #include <numeric>
 #include <set>
 
 #include "my_solution.h"
 using namespace MySolution;
+using std::abs;
 using std::accumulate;
 using std::function;
 using std::gcd;
 using std::min;
 using std::pair;
+using std::reduce;
 string Solution::solution_1702(string binary) {
   int i = binary.find('0');
   if (i < 0) {
@@ -87,4 +91,21 @@ int Solution::solution_1883(vector<int>& dist, int speed, int hoursBefore) {
       return i;
     }
   }
+}
+
+vector<int> Solution::solution_1652(vector<int>& code, int k) {
+  // 定长滑动窗口
+  int n = code.size();
+  vector<int> ans(n);
+  int r = k > 0 ? k + 1 : n;  // 确定初始区间
+  // k>0  -> code[1:k+1]
+  // k<=0 -> code[n-abs(k),n]
+  k = abs(k);
+  int s = reduce(code.begin() + r - k, code.begin() + r);
+  for (int i = 0; i < n; i++) {
+    ans[i] = s;
+    s += code[r % n] - code[(r - k) % n];
+    r++;
+  }
+  return ans;
 }

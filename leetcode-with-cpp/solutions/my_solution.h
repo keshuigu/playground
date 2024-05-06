@@ -38,6 +38,7 @@ class Solution {
   int solution_924(vector<vector<int>>& graph, vector<int>& initial);
   int solution_928(vector<vector<int>>& graph, vector<int>& initial);
   int solution_741(vector<vector<int>>& grid);
+  double solution_857(vector<int>& quality, vector<int>& wage, int k);
   /* solution 501 - 1000 */
 
   /* solution 1001 - 1500 */
@@ -49,10 +50,14 @@ class Solution {
   void solution_1483();  // data_struct.cc#TreeAncestor
   int solution_1052(vector<int>& customers, vector<int>& grumpy, int minutes);
   void solution_1146();  // data_struct.cc#SnapshotArray
+  double solution_1491(vector<int>& salary);
+  int solution_1235(vector<int>& startTime, vector<int>& endTime,
+                    vector<int>& profit);
   /* solution 1001 - 1500 */
 
   /* solution 1501 - 2000 */
   void solution_1600();  // data_struct.cc#ThroneInheritance
+  vector<int> solution_1652(vector<int>& code, int k);
   string solution_1702(string binary);
   vector<int> solution_1766(vector<int>& nums, vector<vector<int>>& edges);
   int solution_1883(vector<int>& dist, int speed, int hoursBefore);

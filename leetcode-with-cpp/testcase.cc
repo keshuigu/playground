@@ -515,3 +515,60 @@ void Test::test_741() {
   grid = {{1, 1, -1}, {1, -1, 1}, {-1, 1, 1}};
   cout << Solution().solution_741(grid) << endl;
 }
+
+void Test::test_857() {
+  vector<int> quality = {10, 20, 5};
+  vector<int> wage = {70, 50, 30};
+  cout << Solution().solution_857(quality, wage, 2) << endl;
+  quality = {3, 1, 10, 10, 1};
+  wage = {4, 8, 2, 2, 7};
+  cout << Solution().solution_857(quality, wage, 3) << endl;
+}
+
+void Test::test_1491() {
+  vector<int> salary = {4000, 3000, 1000, 2000};
+  cout << Solution().solution_1491(salary) << endl;
+  salary = {1000, 2000, 3000};
+  cout << Solution().solution_1491(salary) << endl;
+  salary = {6000, 5000, 4000, 3000, 2000, 1000};
+  cout << Solution().solution_1491(salary) << endl;
+  salary = {8000, 9000, 2000, 3000, 6000, 1000};
+  cout << Solution().solution_1491(salary) << endl;
+}
+
+void Test::test_1235() {
+  vector<int> startTime = {1, 2, 3, 3};
+  vector<int> endTime = {3, 4, 5, 6};
+  vector<int> profit = {50, 10, 40, 70};
+  cout << Solution().solution_1235(startTime, endTime, profit) << endl;
+  startTime = {1, 2, 3, 4, 6};
+  endTime = {3, 5, 10, 6, 9};
+  profit = {20, 20, 100, 70, 60};
+  cout << Solution().solution_1235(startTime, endTime, profit) << endl;
+  startTime = {1, 1, 1};
+  endTime = {2, 3, 4};
+  profit = {5, 6, 4};
+  cout << Solution().solution_1235(startTime, endTime, profit) << endl;
+}
+
+void Test::test_1652() {
+  vector<int> code = {5, 7, 1, 4};
+  vector<int> ans;
+  ans = Solution().solution_1652(code, 3);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+  code = {1, 2, 3, 4};
+  ans = Solution().solution_1652(code, 0);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+  code = {2, 4, 9, 3};
+  ans = Solution().solution_1652(code, -2);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+}

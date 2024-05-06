@@ -152,3 +152,59 @@ int Solution::solution_928(vector<vector<int>>& graph, vector<int>& initial) {
   return cnt.empty() ? *min_element(initial.begin(), initial.end())
                      : min_node_id;
 }
+
+double Solution::solution_857(vector<int>& quality, vector<int>& wage, int k) {
+  int n = quality.size();
+  vector<pair<int, int>> pairs(n);
+  for (int i = 0; i < n; i++) {
+    pairs[i] = make_pair(quality[i], wage[i]);
+  }
+  std::sort(
+      pairs.begin(), pairs.end(),
+      [](const pair<int, int>& a, const pair<int, int>& b) {
+        return (static_cast<double>(a.second) / static_cast<double>(a.first)) <
+               (static_cast<double>(b.second) / static_cast<double>(b.first));
+      });
+  priority_queue<int> pq;
+  int sum_q = 0;
+  for (int i = 0; i < k; i++) {
+    pq.push(pairs[i].first);
+    sum_q += pairs[i].first;
+  }
+  double ans = sum_q * (static_cast<double>(pairs[k - 1].second) /
+                        static_cast<double>(pairs[k - 1].first));
+  for (int i = k; i < n; i++) {
+    int q = pairs[i].first;
+    if (q < pq.top()) {
+      sum_q -= pq.top() - q;
+      pq.pop();
+      pq.push(q);
+      ans = min(ans, sum_q * (static_cast<double>(pairs[i].second) /
+                              static_cast<double>(pairs[i].first)));
+    }
+  }
+  return ans;
+}
+
+int Solution::solution_741(vector<vector<int>>& grid) {
+  int n = grid.size();
+  vector<vector<vector<int>>> f(
+      n * 2 - 1, vector<vector<int>>(n + 1, vector<int>(n + 1, INT_MIN)));
+  f[0][1][1] = grid[0][0];
+  for (int t = 1; t < n * 2 - 1; t++) {
+    for (int j = max(t - n + 1, 0); j <= min(t, n - 1); j++) {
+      if (grid[t - j][j] == -1) {
+        continue;
+      }
+      for (int k = j; k <= min(t, n - 1); k++) {
+        if (grid[t - k][k] == -1) {
+          continue;
+        }
+        f[t][j + 1][k + 1] = max({f[t - 1][j + 1][k + 1], f[t - 1][j + 1][k],
+                                  f[t - 1][j][k + 1], f[t - 1][j][k]}) +
+                             grid[t - j][j] + (k != j ? grid[t - k][k] : 0);
+      }
+    }
+  }
+  return max(f[n * 2 - 2][n][n], 0);
+}

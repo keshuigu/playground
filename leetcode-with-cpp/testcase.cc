@@ -502,8 +502,16 @@ void Test::test_2639() {
 
 void Test::test_2798() {
   vector<int> grid = {0, 1, 2, 3, 4};
-  cout << Solution().solution_2798(grid, 2);
+  cout << Solution().solution_2798(grid, 2) << endl;
 
   grid = {5, 1, 4, 2, 2};
-  cout << Solution().solution_2798(grid, 6);
+  cout << Solution().solution_2798(grid, 6) << endl;
+}
+
+void Test::test_741() {
+  vector<vector<int>> grid = {{0, 1, -1}, {1, 0, -1}, {1, 1, 1}};
+  cout << Solution().solution_741(grid) << endl;
+
+  grid = {{1, 1, -1}, {1, -1, 1}, {-1, 1, 1}};
+  cout << Solution().solution_741(grid) << endl;
 }

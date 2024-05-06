@@ -37,6 +37,7 @@ class Solution {
   void solution_706();  // data_struct.cc#MyHashMap
   int solution_924(vector<vector<int>>& graph, vector<int>& initial);
   int solution_928(vector<vector<int>>& graph, vector<int>& initial);
+  int solution_741(vector<vector<int>>& grid);
   /* solution 501 - 1000 */
 
   /* solution 1001 - 1500 */

@@ -139,3 +139,38 @@ int Solution::solution_1235(vector<int>& startTime, vector<int>& endTime,
   }
   return f[n];
 }
+
+int Solution::solution_1463(vector<vector<int>>& grid) {
+  int n = grid.size(), m = grid[0].size();
+  vector<vector<vector<int>>> f(
+      n, vector<vector<int>>(m + 2, vector<int>(m + 2, INT_MIN)));
+  f[0][1][m] = grid[0][0] + grid[0][m - 1];
+  for (int i = 1; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+      for (int k = 0; k < m; k++) {
+        int val = j != k ? grid[i][j] + grid[i][k] : grid[i][j];
+        f[i][j + 1][k + 1] = max({
+            f[i - 1][j][k],
+            f[i - 1][j + 1][k],
+            f[i - 1][j + 2][k],
+
+            f[i - 1][j][k + 1],
+            f[i - 1][j + 1][k + 1],
+            f[i - 1][j + 2][k + 1],
+
+            f[i - 1][j][k + 2],
+            f[i - 1][j + 1][k + 2],
+            f[i - 1][j + 2][k + 2],
+        });
+        f[i][j + 1][k + 1] += val;
+      }
+    }
+  }
+  int ans = 0;
+  for (int j = 0; j < m; j++) {
+    for (int k = 0; k < m; k++) {
+      ans = max(ans, f[n - 1][j + 1][k + 1]);
+    }
+  }
+  return ans;
+}

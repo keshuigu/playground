@@ -182,3 +182,18 @@ int Solution::solution_2385(TreeNode* root, int start) {
   dfs(root, nullptr);
   return maxDepth(start_node, start_node);
 }
+
+int Solution::solution_2079(vector<int>& plants, int capacity) {
+  int ans = plants.size();
+  int water = capacity;
+  for (int i = 0; i < plants.size(); i++) {
+    // 只计算往返
+    // 每一步已经在ans的初始化中了
+    if (water < plants[i]) {
+      ans += i * 2;
+      water = capacity;
+    }
+    water -= plants[i];
+  }
+  return ans;
+}

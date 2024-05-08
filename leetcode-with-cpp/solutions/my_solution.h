@@ -68,6 +68,7 @@ class Solution {
   vector<int> solution_2007(vector<int>& changed);
   vector<int> solution_2007_2(vector<int>& changed);
   int solution_2009(vector<int>& nums);
+  int solution_2079(vector<int>& plants, int capacity);
   vector<vector<int>> solution_2192(int n, vector<vector<int>>& edges);
   int solution_2385(TreeNode* root, int start);
   /* solution 2001 - 2500 */

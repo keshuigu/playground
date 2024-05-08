@@ -584,3 +584,11 @@ void Test::test_1463() {
           {1, 0, 2, 3, 0, 0, 6}};
   cout << Solution().solution_1463(grid) << endl;
 }
+
+void Test::test_2079() {
+  vector<int> grid = {2, 2, 3, 3};
+  cout << Solution().solution_2079(grid, 5) << endl;
+
+  grid = {1, 1, 1, 4, 2, 3};
+  cout << Solution().solution_2079(grid, 4) << endl;
+}

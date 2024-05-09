@@ -197,3 +197,26 @@ int Solution::solution_2079(vector<int>& plants, int capacity) {
   }
   return ans;
 }
+
+int Solution::solution_2105(vector<int>& plants, int capacityA, int capacityB) {
+  int left = 0, right = plants.size() - 1, ans = 0;
+  int cap_l = capacityA, cap_r = capacityB;
+  while (left < right) {
+    if (plants[left] > cap_l) {
+      ans++;
+      cap_l = capacityA;
+    }
+    if (plants[right] > cap_r) {
+      ans++;
+      cap_r = capacityB;
+    }
+    cap_l -= plants[left];
+    cap_r -= plants[right];
+    left++;
+    right--;
+  }
+  if (left == right && (plants[left] > max(cap_l, cap_r))) {
+    ans += 1;
+  }
+  return ans;
+}

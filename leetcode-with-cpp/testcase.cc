@@ -592,3 +592,14 @@ void Test::test_2079() {
   grid = {1, 1, 1, 4, 2, 3};
   cout << Solution().solution_2079(grid, 4) << endl;
 }
+
+void Test::test_2105() {
+  vector<int> grid = {2, 2, 3, 3};
+  cout << Solution().solution_2105(grid, 5, 5) << endl;
+
+  grid = {2, 2, 3, 3};
+  cout << Solution().solution_2105(grid, 3, 4) << endl;
+
+  grid = {5};
+  cout << Solution().solution_2105(grid, 10, 8) << endl;
+}

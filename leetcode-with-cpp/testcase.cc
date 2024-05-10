@@ -603,3 +603,11 @@ void Test::test_2105() {
   grid = {5};
   cout << Solution().solution_2105(grid, 10, 8) << endl;
 }
+
+void Test::test_2960() {
+  vector<int> grid = {1, 1, 2, 1, 3};
+  cout << Solution().solution_2960(grid) << endl;
+
+  grid = {0, 1, 2};
+  cout << Solution().solution_2960(grid) << endl;
+}

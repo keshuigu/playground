@@ -83,6 +83,7 @@ class Solution {
   int solution_2739(int mainTank, int additionalTank);
   vector<int> solution_2639(vector<vector<int>>& grid);
   int solution_2798(vector<int>& hours, int target);
+  int solution_2960(vector<int>& batteryPercentages);
   /* solution 2501 - 3000 */
 };
 }  // namespace MySolution

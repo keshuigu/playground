@@ -118,3 +118,13 @@ int Solution::solution_2798(vector<int>& hours, int target) {
   }
   return ans;
 }
+
+int Solution::solution_2960(vector<int>& batteryPercentages) {
+  int ans = 0;
+  for (auto&& i : batteryPercentages) {
+    if (i > ans) {
+      ans++;
+    }
+  }
+  return ans;
+}

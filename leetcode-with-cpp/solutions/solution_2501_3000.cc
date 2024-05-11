@@ -4,6 +4,7 @@
 #include <ranges>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 
 #include "my_solution.h"
 using namespace MySolution;
@@ -13,6 +14,7 @@ using std::max;
 using std::min;
 using std::to_string;
 using std::unordered_map;
+using std::unordered_set;
 using std::ranges::lower_bound;
 using std::ranges::upper_bound;
 int Solution::solution_2908(vector<int>& nums) {
@@ -125,6 +127,17 @@ int Solution::solution_2960(vector<int>& batteryPercentages) {
     if (i > ans) {
       ans++;
     }
+  }
+  return ans;
+}
+
+int Solution::solution_2391(vector<string>& garbage, vector<int>& travel) {
+  int ans = garbage[0].size();
+  unordered_set<char> s;
+  for (int i = garbage.size() - 1; i > 0; i--) {
+    auto& g = garbage[i];
+    s.insert(g.begin(), g.end());
+    ans += g.size() + travel[i - 1] * s.size();
   }
   return ans;
 }

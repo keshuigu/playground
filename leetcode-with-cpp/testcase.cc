@@ -611,3 +611,13 @@ void Test::test_2960() {
   grid = {0, 1, 2};
   cout << Solution().solution_2960(grid) << endl;
 }
+
+void Test::test_2391() {
+  vector<string> grabage = {"G", "P", "GP", "GG"};
+  vector<int> travel = {2, 4, 3};
+  cout << Solution().solution_2391(grabage, travel) << endl;
+
+  grabage = {"MMM", "PGM", "GP"};
+  travel = {3, 10};
+  cout << Solution().solution_2391(grabage, travel) << endl;
+}

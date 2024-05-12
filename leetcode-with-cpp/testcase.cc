@@ -621,3 +621,10 @@ void Test::test_2391() {
   travel = {3, 10};
   cout << Solution().solution_2391(grabage, travel) << endl;
 }
+
+void Test::test_1553() {
+  cout << Solution().solution_1553(10) << endl;
+  cout << Solution().solution_1553(6) << endl;
+  cout << Solution().solution_1553(1) << endl;
+  cout << Solution().solution_1553(56) << endl;
+}

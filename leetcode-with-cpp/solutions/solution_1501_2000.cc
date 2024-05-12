@@ -3,9 +3,9 @@
 #include <functional>
 #include <numeric>
 #include <set>
+#include <unordered_map>
 
 #include "my_solution.h"
-using namespace MySolution;
 using std::abs;
 using std::accumulate;
 using std::function;
@@ -13,6 +13,9 @@ using std::gcd;
 using std::min;
 using std::pair;
 using std::reduce;
+using std::unordered_map;
+namespace MySolution {
+
 string Solution::solution_1702(string binary) {
   int i = binary.find('0');
   if (i < 0) {
@@ -109,3 +112,20 @@ vector<int> Solution::solution_1652(vector<int>& code, int k) {
   }
   return ans;
 }
+
+int Solution::solution_1553(int n) {
+  unordered_map<int, int> memo;
+  function<int(int)> dfs = [&memo, &dfs](int x) -> int {
+    if (x <= 1) {
+      return x;
+    }
+    if (memo.contains(x)) {
+      return memo[x];
+    }
+    return memo[x] = min({x % 2 + dfs(x / 2), x % 3 + dfs(x / 3)}) + 1;
+  };
+
+  return dfs(n);
+}
+
+}  // namespace MySolution

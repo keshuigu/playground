@@ -39,6 +39,7 @@ class Solution {
   int solution_928(vector<vector<int>>& graph, vector<int>& initial);
   int solution_741(vector<vector<int>>& grid);
   double solution_857(vector<int>& quality, vector<int>& wage, int k);
+  int solution_994(vector<vector<int>>& grid);
   /* solution 501 - 1000 */
 
   /* solution 1001 - 1500 */

@@ -628,3 +628,12 @@ void Test::test_1553() {
   cout << Solution().solution_1553(1) << endl;
   cout << Solution().solution_1553(56) << endl;
 }
+
+void Test::test_994() {
+  vector<vector<int>> grid = {{2, 1, 1}, {1, 1, 0}, {0, 1, 1}};
+  cout << Solution().solution_994(grid) << endl;
+  grid = {{2, 1, 1}, {0, 1, 1}, {1, 0, 1}};
+  cout << Solution().solution_994(grid) << endl;
+  grid = {{0, 2}};
+  cout << Solution().solution_994(grid) << endl;
+}

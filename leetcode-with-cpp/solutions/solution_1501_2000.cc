@@ -6,6 +6,8 @@
 #include <unordered_map>
 
 #include "my_solution.h"
+
+namespace MySolution {
 using std::abs;
 using std::accumulate;
 using std::function;
@@ -14,8 +16,6 @@ using std::min;
 using std::pair;
 using std::reduce;
 using std::unordered_map;
-namespace MySolution {
-
 string Solution::solution_1702(string binary) {
   int i = binary.find('0');
   if (i < 0) {

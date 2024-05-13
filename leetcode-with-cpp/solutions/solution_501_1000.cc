@@ -7,12 +7,14 @@
 #include <utility>
 
 #include "my_solution.h"
-using namespace MySolution;
+
+namespace MySolution {
 using std::function;
 using std::make_pair;
 using std::max;
 using std::min;
 using std::min_element;
+using std::move;
 using std::pair;
 using std::priority_queue;
 using std::sort;
@@ -208,3 +210,37 @@ int Solution::solution_741(vector<vector<int>>& grid) {
   }
   return max(f[n * 2 - 2][n][n], 0);
 }
+
+int Solution::solution_994(vector<vector<int>>& grid) {
+  int direction[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+  int m = grid.size(), n = grid[0].size();
+  int fresh = 0;
+  vector<pair<int, int>> q;
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+      if (grid[i][j] == 1) {
+        fresh++;
+      } else if (grid[i][j] == 2) {
+        q.emplace_back(i, j);
+      }
+    }
+  }
+  int ans = -1;
+  while (!q.empty()) {
+    ans++;
+    vector<pair<int, int>> nxt;
+    for (auto&& [x, y] : q) {
+      for (auto&& d : direction) {
+        int i = x + d[0], j = y + d[1];
+        if (0 <= i && i < m && 0 <= j && j < n && grid[i][j] == 1) {
+          grid[i][j] = 2;
+          fresh--;
+          nxt.emplace_back(i, j);
+        }
+      }
+    }
+    q = move(nxt);
+  }
+  return fresh ? -1 : max(ans, 0);
+}
+}  // namespace MySolution

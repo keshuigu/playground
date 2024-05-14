@@ -637,3 +637,10 @@ void Test::test_994() {
   grid = {{0, 2}};
   cout << Solution().solution_994(grid) << endl;
 }
+
+void Test::test_2244() {
+  vector<int> grid = {2, 2, 3, 3, 2, 4, 4, 4, 4, 4};
+  cout << Solution().solution_2244(grid) << endl;
+  grid = {2, 3, 3};
+  cout << Solution().solution_2244(grid) << endl;
+}

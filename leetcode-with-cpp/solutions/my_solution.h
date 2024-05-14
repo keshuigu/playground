@@ -75,6 +75,7 @@ class Solution {
   vector<vector<int>> solution_2192(int n, vector<vector<int>>& edges);
   int solution_2385(TreeNode* root, int start);
   int solution_2391(vector<string>& garbage, vector<int>& travel);
+  int solution_2244(vector<int>& tasks);
   /* solution 2001 - 2500 */
 
   /* solution 2501 - 3000 */

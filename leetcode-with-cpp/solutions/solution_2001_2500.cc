@@ -6,7 +6,6 @@
 
 #include "my_solution.h"
 
-using namespace MySolution;
 using std::function;
 using std::max;
 using std::multiset;
@@ -14,6 +13,7 @@ using std::unique;
 using std::unordered_map;
 using std::ranges::fill;
 using std::ranges::sort;
+namespace MySolution {
 vector<vector<int>> Solution::solution_2192(int n, vector<vector<int>>& edges) {
   vector<vector<int>> g(n);
   for (auto&& e : edges) {
@@ -220,3 +220,20 @@ int Solution::solution_2105(vector<int>& plants, int capacityA, int capacityB) {
   }
   return ans;
 }
+
+int Solution::solution_2244(vector<int>& tasks) {
+  unordered_map<int, int> cnt;
+  for (auto&& t : tasks) {
+    cnt[t]++;
+  }
+  int ans = 0;
+  for (auto&& [_, v] : cnt) {
+    if (v == 1) {
+      return -1;
+    }
+    ans += (v + 2) / 3;
+  }
+  return ans;
+}
+
+}  // namespace MySolution

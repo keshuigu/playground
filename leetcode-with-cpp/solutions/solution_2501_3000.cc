@@ -1,22 +1,27 @@
 #include <algorithm>
+#include <array>
 #include <deque>
 #include <functional>
 #include <ranges>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
 #include "my_solution.h"
-using namespace MySolution;
+using std::array;
 using std::deque;
 using std::function;
+using std::get;
+using std::lower_bound;
 using std::max;
 using std::min;
+using std::sort;
 using std::to_string;
 using std::unordered_map;
 using std::unordered_set;
-using std::ranges::lower_bound;
-using std::ranges::upper_bound;
+namespace MySolution {
+
 int Solution::solution_2908(vector<int>& nums) {
   int n = nums.size();
   vector<int> pre(n);
@@ -64,8 +69,8 @@ string Solution::solution_2810(string s) {
 }
 
 int Solution::solution_2529(vector<int>& nums) {
-  int neg = lower_bound(nums, 0) - nums.begin();
-  int pos = nums.end() - upper_bound(nums, 0);
+  int neg = std::ranges::lower_bound(nums, 0) - nums.begin();
+  int pos = nums.end() - std::ranges::upper_bound(nums, 0);
   return max(neg, pos);
 }
 
@@ -141,3 +146,34 @@ int Solution::solution_2391(vector<string>& garbage, vector<int>& travel) {
   }
   return ans;
 }
+
+int Solution::solution_2589(vector<vector<int>>& tasks) {
+  sort(tasks.begin(), tasks.end(),
+       [](auto& a, auto& b) { return a[1] < b[1]; });
+  // 保存左右端点和栈底到栈顶的区间长度的和
+  vector<array<int, 3>> st{{-2, -2, 0}};  // 哨兵，保证不和任何区间相交
+  for (auto&& t : tasks) {
+    int start = t[0], end = t[1], d = t[2];
+    auto [_, r, s] =
+        *--lower_bound(st.begin(), st.end(), start,
+                       [](const auto& a, int b) { return a[0] < b; });
+    // 这一段是除了r位于上面那段的可利用时间外，全部的可利用时间
+    d -= st.back()[2] - s;
+    if (start <= r) {
+      d -= r - start + 1;  // 上面那一段里的可利用时间
+    }
+    if (d <= 0) {
+      continue;  // 不需要新增
+    }
+    while (end - st.back()[1] <= d) {
+      // 如果需要的新增时间填满了最后一段与现在end间的空余，需要合并
+      auto [l, r, _] = st.back();
+      st.pop_back();
+      d += r - l + 1;  // 合并时长
+    }
+    st.push_back({end - d + 1, end, st.back()[2] + d});
+  }
+  return st.back()[2];
+}
+
+}  // namespace MySolution

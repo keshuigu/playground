@@ -88,6 +88,7 @@ class Solution {
   vector<int> solution_2639(vector<vector<int>>& grid);
   int solution_2798(vector<int>& hours, int target);
   int solution_2960(vector<int>& batteryPercentages);
+  int solution_2589(vector<vector<int>>& tasks);
   /* solution 2501 - 3000 */
 };
 }  // namespace MySolution

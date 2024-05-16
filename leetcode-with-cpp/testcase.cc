@@ -651,3 +651,10 @@ void Test::test_2589() {
   tasks = {{1, 3, 2}, {2, 5, 3}, {5, 6, 2}};
   cout << Solution().solution_2589(tasks) << endl;
 }
+
+void Test::test_1953() {
+  vector<int> grid = {1, 2, 3};
+  cout << Solution().solution_1953(grid) << endl;
+  grid = {5, 2, 1};
+  cout << Solution().solution_1953(grid) << endl;
+}

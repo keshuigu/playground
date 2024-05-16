@@ -12,6 +12,7 @@ using std::abs;
 using std::accumulate;
 using std::function;
 using std::gcd;
+using std::max_element;
 using std::min;
 using std::pair;
 using std::reduce;
@@ -126,6 +127,16 @@ int Solution::solution_1553(int n) {
   };
 
   return dfs(n);
+}
+
+long long Solution::solution_1953(vector<int>& milestones) {
+  long long mx = *max_element(milestones.begin(), milestones.end());
+  long long total = accumulate(milestones.begin(), milestones.end(), 0LL);
+  if (2 * mx <= total) {
+    return total;
+  } else {
+    return (total - mx) * 2 + 1;
+  }
 }
 
 }  // namespace MySolution

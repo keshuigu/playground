@@ -40,6 +40,8 @@ class Solution {
   int solution_741(vector<vector<int>>& grid);
   double solution_857(vector<int>& quality, vector<int>& wage, int k);
   int solution_994(vector<vector<int>>& grid);
+  int solution_826(vector<int>& difficulty, vector<int>& profit,
+                   vector<int>& worker);
   /* solution 501 - 1000 */
 
   /* solution 1001 - 1500 */

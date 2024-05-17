@@ -14,7 +14,6 @@ using std::make_pair;
 using std::max;
 using std::min;
 using std::min_element;
-using std::move;
 using std::pair;
 using std::priority_queue;
 using std::sort;
@@ -239,8 +238,29 @@ int Solution::solution_994(vector<vector<int>>& grid) {
         }
       }
     }
-    q = move(nxt);
+    q = std::move(nxt);
   }
   return fresh ? -1 : max(ans, 0);
 }
+
+int Solution::solution_826(vector<int>& difficulty, vector<int>& profit,
+                           vector<int>& worker) {
+  int n = difficulty.size();
+  vector<pair<int, int>> jobs(n);
+  for (int i = 0; i < n; i++) {
+    jobs[i] = {difficulty[i], profit[i]};
+  }
+  sort(jobs.begin(), jobs.end());
+  sort(worker.begin(), worker.end());
+  int ans = 0, j = 0, mx_profit = 0;
+  for (auto&& w : worker) {
+    while (j < n && jobs[j].first <= w) {
+      mx_profit = max(mx_profit, jobs[j].second);
+      j++;
+    }
+    ans += mx_profit;
+  }
+  return ans;
+}
+
 }  // namespace MySolution

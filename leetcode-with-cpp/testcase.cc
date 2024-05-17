@@ -658,3 +658,14 @@ void Test::test_1953() {
   grid = {5, 2, 1};
   cout << Solution().solution_1953(grid) << endl;
 }
+
+void Test::test_826() {
+  vector<int> difficulty = {2, 4, 6, 8, 10};
+  vector<int> profit = {10, 20, 30, 40, 50};
+  vector<int> worker = {4, 5, 6, 7};
+  cout << Solution().solution_826(difficulty, profit, worker) << endl;
+  difficulty = {85, 47, 57};
+  profit = {24, 66, 99};
+  worker = {40, 25, 25};
+  cout << Solution().solution_826(difficulty, profit, worker) << endl;
+}

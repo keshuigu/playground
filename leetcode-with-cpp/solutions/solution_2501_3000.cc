@@ -176,4 +176,30 @@ int Solution::solution_2589(vector<vector<int>>& tasks) {
   return st.back()[2];
 }
 
+int Solution::solution_2644(vector<int>& nums, vector<int>& divisors) {
+  sort(nums.begin(), nums.end(), [](int a, int b) { return a > b; });
+  sort(divisors.begin(), divisors.end());
+  int dup = nums.size() - unordered_set<int>(nums.begin(), nums.end()).size();
+  int mx = -1, ans = 0;
+  for (auto&& d : divisors) {
+    if ((mx - dup + 1) > ((nums[0] + d - 1) / d)) {
+      break;
+    }
+    int cnt = 0;
+    for (auto&& num : nums) {
+      if (num < d) {
+        break;
+      }
+      if (num % d == 0) {
+        cnt++;
+      }
+    }
+    if (cnt > mx) {
+      mx = cnt;
+      ans = d;
+    }
+  }
+  return ans;
+}
+
 }  // namespace MySolution

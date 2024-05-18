@@ -669,3 +669,12 @@ void Test::test_826() {
   worker = {40, 25, 25};
   cout << Solution().solution_826(difficulty, profit, worker) << endl;
 }
+
+void Test::test_2644() {
+  vector<int> nums = {4, 7, 9, 3, 9};
+  vector<int> divisors = {5, 2, 3};
+  cout << Solution().solution_2644(nums, divisors) << endl;
+  nums = {20, 14, 21, 10};
+  divisors = {5, 7, 5};
+  cout << Solution().solution_2644(nums, divisors) << endl;
+}

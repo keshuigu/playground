@@ -4,8 +4,8 @@
 
 #include "data_struct.h"
 #include "my_solution.h"
+namespace Testcase {
 using namespace MySolution;
-using namespace Testcase;
 using namespace std;
 using namespace MyDataStruct;
 Test::Test(/* args */) {}
@@ -678,3 +678,16 @@ void Test::test_2644() {
   divisors = {5, 7, 5};
   cout << Solution().solution_2644(nums, divisors) << endl;
 }
+
+void Test::test_1535() {
+  vector<int> arr = {2, 1, 3, 5, 4, 6, 7};
+  cout << Solution().solution_1535(arr, 2) << endl;
+  arr = {3, 2, 1};
+  cout << Solution().solution_1535(arr, 10) << endl;
+  arr = {1, 9, 8, 2, 3, 7, 6, 4, 5};
+  cout << Solution().solution_1535(arr, 7) << endl;
+  arr = {1, 11, 22, 33, 44, 55, 66, 77, 88, 99};
+  cout << Solution().solution_1535(arr, 1000000000) << endl;
+}
+
+}  // namespace Testcase

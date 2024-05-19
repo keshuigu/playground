@@ -67,6 +67,7 @@ class Solution {
   int solution_1883(vector<int>& dist, int speed, int hoursBefore);
   int solution_1553(int n);
   long long solution_1953(vector<int>& milestones);
+  int solution_1535(vector<int>& arr, int k);
   /* solution 1501 - 2000 */
 
   /* solution 2001 - 2500 */

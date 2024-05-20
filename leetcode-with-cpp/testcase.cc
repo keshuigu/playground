@@ -690,4 +690,11 @@ void Test::test_1535() {
   cout << Solution().solution_1535(arr, 1000000000) << endl;
 }
 
+void Test::test_1542() {
+  cout << Solution().solution_1542("3242415") << endl;
+  cout << Solution().solution_1542("12345678") << endl;
+  cout << Solution().solution_1542("213123") << endl;
+  cout << Solution().solution_1542("00") << endl;
+}
+
 }  // namespace Testcase

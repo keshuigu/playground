@@ -175,20 +175,4 @@ int Solution::solution_1463(vector<vector<int>>& grid) {
   return ans;
 }
 
-int Solution::solution_1535(vector<int>& arr, int k) {
-  int mx = arr[0];
-  int win = -1;
-  for (auto&& x : arr) {
-    if (x > mx) {
-      mx = x;
-      win = 0;
-    }
-    win++;
-    if (win == k) {
-      break;
-    }
-  }
-  return mx;
-}
-
 }  // namespace MySolution

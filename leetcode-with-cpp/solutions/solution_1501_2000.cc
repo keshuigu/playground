@@ -12,6 +12,7 @@ using std::abs;
 using std::accumulate;
 using std::function;
 using std::gcd;
+using std::max;
 using std::max_element;
 using std::min;
 using std::pair;
@@ -138,5 +139,38 @@ long long Solution::solution_1953(vector<int>& milestones) {
     return (total - mx) * 2 + 1;
   }
 }
-
+int Solution::solution_1535(vector<int>& arr, int k) {
+  int mx = arr[0];
+  int win = -1;
+  for (auto&& x : arr) {
+    if (x > mx) {
+      mx = x;
+      win = 0;
+    }
+    win++;
+    if (win == k) {
+      break;
+    }
+  }
+  return mx;
+}
+int Solution::solution_1542(string s) {
+  int n = s.size();
+  vector<int> pos(1 << 10, n);
+  int ans = 0;
+  pos[0] = -1;
+  int pre = 0;
+  for (int i = 0; i < n; i++) {
+    int t = s[i] - '0';
+    pre ^= 1 << t;
+    ans = max(ans, i - pos[pre]);
+    for (int j = 0; j < 10; j++) {
+      ans = max(ans, i - pos[pre ^ (1 << j)]);
+    }
+    if (pos[pre] == n) {
+      pos[pre] = i;
+    }
+  }
+  return ans;
+}
 }  // namespace MySolution

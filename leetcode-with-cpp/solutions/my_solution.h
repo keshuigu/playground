@@ -81,6 +81,7 @@ class Solution {
   int solution_2385(TreeNode* root, int start);
   int solution_2391(vector<string>& garbage, vector<int>& travel);
   int solution_2244(vector<int>& tasks);
+  vector<vector<int>> solution_2225(vector<vector<int>>& matches);
   /* solution 2001 - 2500 */
 
   /* solution 2501 - 3000 */
@@ -95,6 +96,7 @@ class Solution {
   int solution_2960(vector<int>& batteryPercentages);
   int solution_2589(vector<vector<int>>& tasks);
   int solution_2644(vector<int>& nums, vector<int>& divisors);
+  int solution_2769(int num, int t);
   /* solution 2501 - 3000 */
 };
 }  // namespace MySolution

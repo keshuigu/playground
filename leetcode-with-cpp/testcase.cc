@@ -697,4 +697,20 @@ void Test::test_1542() {
   cout << Solution().solution_1542("00") << endl;
 }
 
+void Test::test_2225() {
+  vector<vector<int>> arr = {{1, 3}, {2, 3}, {3, 6}, {5, 6},  {5, 7},
+                             {4, 5}, {4, 8}, {4, 9}, {10, 4}, {10, 9}};
+  vector<vector<int>> ans = Solution().solution_2225(arr);
+  for (auto &&x : ans) {
+    for (auto &&d : x) {
+      cout << d << " ";
+    }
+    cout << endl;
+  }
+}
+
+void Test::test_2769() {
+  cout << Solution().solution_2769(4, 1) << endl;
+  cout << Solution().solution_2769(3, 2) << endl;
+}
 }  // namespace Testcase

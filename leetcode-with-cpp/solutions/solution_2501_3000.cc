@@ -201,5 +201,5 @@ int Solution::solution_2644(vector<int>& nums, vector<int>& divisors) {
   }
   return ans;
 }
-
+int Solution::solution_2769(int num, int t) { return num + t * 2; }
 }  // namespace MySolution

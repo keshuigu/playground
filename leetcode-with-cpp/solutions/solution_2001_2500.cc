@@ -235,5 +235,30 @@ int Solution::solution_2244(vector<int>& tasks) {
   }
   return ans;
 }
-
+vector<vector<int>> Solution::solution_2225(vector<vector<int>>& matches) {
+  vector<vector<int>> ans(2, vector<int>());
+  unordered_map<int, int> f;
+  for (auto&& m : matches) {
+    int w = m[0];
+    int l = m[1];
+    if (!f.contains(w)) {
+      f[w] = 0;
+    }
+    if (!f.contains(l)) {
+      f[l] = 1;
+    } else {
+      f[l]++;
+    }
+  }
+  for (auto&& p : f) {
+    if (p.second == 0) {
+      ans[0].push_back(p.first);
+    } else if (p.second == 1) {
+      ans[1].push_back(p.first);
+    }
+  }
+  sort(ans[0].begin(), ans[0].end());
+  sort(ans[1].begin(), ans[1].end());
+  return ans;
+}
 }  // namespace MySolution

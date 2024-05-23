@@ -202,4 +202,25 @@ int Solution::solution_2644(vector<int>& nums, vector<int>& divisors) {
   return ans;
 }
 int Solution::solution_2769(int num, int t) { return num + t * 2; }
+int Solution::solution_2831(vector<int>& nums, int k) {
+  unordered_map<int, vector<int>> pos_lists;
+  for (int i = 0; i < nums.size(); i++) {
+    int x = nums[i];
+    if (pos_lists.find(x) == pos_lists.end()) {
+      pos_lists[x] = vector<int>();
+    }
+    pos_lists[x].push_back(i - pos_lists[x].size());
+  }
+  int ans = 0;
+  for (auto&& [_, pos] : pos_lists) {
+    int left = 0;
+    for (int right = 0; right < pos.size(); right++) {
+      while (pos[right] - pos[left] > k) {
+        left++;
+      }
+      ans = max(ans, right - left + 1);
+    }
+  }
+  return ans;
+}
 }  // namespace MySolution

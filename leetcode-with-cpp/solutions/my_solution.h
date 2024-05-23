@@ -97,6 +97,7 @@ class Solution {
   int solution_2589(vector<vector<int>>& tasks);
   int solution_2644(vector<int>& nums, vector<int>& divisors);
   int solution_2769(int num, int t);
+  int solution_2831(vector<int>& nums, int k);
   /* solution 2501 - 3000 */
 };
 }  // namespace MySolution

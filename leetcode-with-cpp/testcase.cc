@@ -713,4 +713,12 @@ void Test::test_2769() {
   cout << Solution().solution_2769(4, 1) << endl;
   cout << Solution().solution_2769(3, 2) << endl;
 }
+
+void Test::test_2831() {
+  vector<int> arr = {1, 3, 2, 3, 1, 3};
+  cout << Solution().solution_2831(arr, 3) << endl;
+  arr = {1, 1, 2, 2, 1, 1};
+  cout << Solution().solution_2831(arr, 2) << endl;
+}
+
 }  // namespace Testcase

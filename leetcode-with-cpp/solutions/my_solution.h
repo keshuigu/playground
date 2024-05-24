@@ -69,6 +69,7 @@ class Solution {
   long long solution_1953(vector<int>& milestones);
   int solution_1535(vector<int>& arr, int k);
   int solution_1542(string s);
+  vector<int> solution_1673(vector<int>& nums, int k);
   /* solution 1501 - 2000 */
 
   /* solution 2001 - 2500 */

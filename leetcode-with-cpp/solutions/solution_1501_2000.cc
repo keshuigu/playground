@@ -173,4 +173,18 @@ int Solution::solution_1542(string s) {
   }
   return ans;
 }
+
+vector<int> Solution::solution_1673(vector<int>& nums, int k) {
+  vector<int> s;
+  for (int i = 0; i < nums.size(); i++) {
+    int x = nums[i];
+    while (!s.empty() && x < s.back() && s.size() + nums.size() - i > k) {
+      s.pop_back();
+    }
+    if (s.size() < k) {
+      s.push_back(x);
+    }
+  }
+  return s;
+}
 }  // namespace MySolution

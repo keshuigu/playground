@@ -201,5 +201,15 @@ int Solution::solution_2644(vector<int>& nums, vector<int>& divisors) {
   }
   return ans;
 }
-
+vector<int> Solution::solution_2903(vector<int>& nums, int indexDifference,
+                                    int valueDifference) {
+  for (int i = 0; i < nums.size(); i++) {
+    for (int j = i + indexDifference; j < nums.size(); j++) {
+      if (abs(nums[i] - nums[j]) >= valueDifference) {
+        return {i, j};
+      }
+    }
+  }
+  return {-1, -1};
+}
 }  // namespace MySolution

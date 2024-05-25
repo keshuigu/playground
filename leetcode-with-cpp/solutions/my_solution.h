@@ -95,6 +95,8 @@ class Solution {
   int solution_2960(vector<int>& batteryPercentages);
   int solution_2589(vector<vector<int>>& tasks);
   int solution_2644(vector<int>& nums, vector<int>& divisors);
+  vector<int> solution_2903(vector<int>& nums, int indexDifference,
+                            int valueDifference);
   /* solution 2501 - 3000 */
 };
 }  // namespace MySolution

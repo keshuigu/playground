@@ -697,4 +697,16 @@ void Test::test_1542() {
   cout << Solution().solution_1542("00") << endl;
 }
 
+void Test::test_2903() {
+  vector<int> nums = {5, 1, 4, 1};
+  vector<int> ans = Solution().solution_2903(nums, 2, 4);
+  cout << ans[0] << ans[1] << endl;
+  nums = {2, 1};
+  ans = Solution().solution_2903(nums, 0, 0);
+  cout << ans[0] << ans[1] << endl;
+  nums = {1, 2, 3};
+  ans = Solution().solution_2903(nums, 2, 4);
+  cout << ans[0] << ans[1] << endl;
+}
+
 }  // namespace Testcase

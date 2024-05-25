@@ -706,7 +706,44 @@ void Test::test_2903() {
   cout << ans[0] << ans[1] << endl;
   nums = {1, 2, 3};
   ans = Solution().solution_2903(nums, 2, 4);
-  cout << ans[0] << ans[1] << endl;
+  cout << ans[0] << ans[1] << endl;}
+void Test::test_2225() {
+  vector<vector<int>> arr = {{1, 3}, {2, 3}, {3, 6}, {5, 6},  {5, 7},
+                             {4, 5}, {4, 8}, {4, 9}, {10, 4}, {10, 9}};
+  vector<vector<int>> ans = Solution().solution_2225(arr);
+  for (auto &&x : ans) {
+    for (auto &&d : x) {
+      cout << d << " ";
+    }
+    cout << endl;
+  }
+}
+
+void Test::test_2769() {
+  cout << Solution().solution_2769(4, 1) << endl;
+  cout << Solution().solution_2769(3, 2) << endl;
+}
+
+void Test::test_2831() {
+  vector<int> arr = {1, 3, 2, 3, 1, 3};
+  cout << Solution().solution_2831(arr, 3) << endl;
+  arr = {1, 1, 2, 2, 1, 1};
+  cout << Solution().solution_2831(arr, 2) << endl;
+}
+
+void Test::test_1673() {
+  vector<int> arr = {3, 5, 2, 6};
+  vector<int> ans = Solution().solution_1673(arr, 2);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+  arr = {2, 4, 3, 3, 5, 4, 9, 6};
+  ans = Solution().solution_1673(arr, 4);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
 }
 
 }  // namespace Testcase

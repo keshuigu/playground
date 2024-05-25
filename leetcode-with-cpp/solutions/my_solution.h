@@ -69,6 +69,7 @@ class Solution {
   long long solution_1953(vector<int>& milestones);
   int solution_1535(vector<int>& arr, int k);
   int solution_1542(string s);
+  vector<int> solution_1673(vector<int>& nums, int k);
   /* solution 1501 - 2000 */
 
   /* solution 2001 - 2500 */
@@ -81,6 +82,7 @@ class Solution {
   int solution_2385(TreeNode* root, int start);
   int solution_2391(vector<string>& garbage, vector<int>& travel);
   int solution_2244(vector<int>& tasks);
+  vector<vector<int>> solution_2225(vector<vector<int>>& matches);
   /* solution 2001 - 2500 */
 
   /* solution 2501 - 3000 */
@@ -97,6 +99,8 @@ class Solution {
   int solution_2644(vector<int>& nums, vector<int>& divisors);
   vector<int> solution_2903(vector<int>& nums, int indexDifference,
                             int valueDifference);
+  int solution_2769(int num, int t);
+  int solution_2831(vector<int>& nums, int k);
   /* solution 2501 - 3000 */
 };
 }  // namespace MySolution

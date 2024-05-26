@@ -706,7 +706,8 @@ void Test::test_2903() {
   cout << ans[0] << ans[1] << endl;
   nums = {1, 2, 3};
   ans = Solution().solution_2903(nums, 2, 4);
-  cout << ans[0] << ans[1] << endl;}
+  cout << ans[0] << ans[1] << endl;
+}
 void Test::test_2225() {
   vector<vector<int>> arr = {{1, 3}, {2, 3}, {3, 6}, {5, 6},  {5, 7},
                              {4, 5}, {4, 8}, {4, 9}, {10, 4}, {10, 9}};
@@ -744,6 +745,14 @@ void Test::test_1673() {
     cout << x << " ";
   }
   cout << endl;
+}
+
+void Test::test_1738() {
+  vector<vector<int>> matrix = {{5, 2}, {1, 6}};
+  cout << Solution().solution_1738(matrix, 1) << endl;
+  cout << Solution().solution_1738(matrix, 2) << endl;
+  cout << Solution().solution_1738(matrix, 3) << endl;
+  cout << Solution().solution_1738(matrix, 4) << endl;
 }
 
 }  // namespace Testcase

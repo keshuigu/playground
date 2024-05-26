@@ -1,7 +1,9 @@
 #include <stdlib.h>
 
+#include <algorithm>
 #include <functional>
 #include <numeric>
+#include <ranges>
 #include <set>
 #include <unordered_map>
 
@@ -186,5 +188,20 @@ vector<int> Solution::solution_1673(vector<int>& nums, int k) {
     }
   }
   return s;
+}
+
+int Solution::solution_1738(vector<vector<int>>& matrix, int k) {
+  int m = matrix.size(), n = matrix[0].size();
+  vector<vector<int>> s(m + 1, vector<int>(n + 1));
+  vector<int> a;
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+      s[i + 1][j + 1] = s[i + 1][j] ^ s[i][j + 1] ^ s[i][j] ^ matrix[i][j];
+    }
+    // 尾部插入一行数据
+    a.insert(a.end(), s[i + 1].begin() + 1, s[i + 1].end());
+  }
+  std::ranges::nth_element(a, a.end() - k);
+  return a[a.size() - k];
 }
 }  // namespace MySolution

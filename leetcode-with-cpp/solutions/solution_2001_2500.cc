@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <functional>
+#include <numeric>
 #include <ranges>
 #include <set>
 #include <unordered_map>
@@ -9,6 +10,7 @@
 using std::function;
 using std::max;
 using std::multiset;
+using std::reduce;
 using std::unique;
 using std::unordered_map;
 using std::ranges::fill;
@@ -259,6 +261,16 @@ vector<vector<int>> Solution::solution_2225(vector<vector<int>>& matches) {
   }
   sort(ans[0].begin(), ans[0].end());
   sort(ans[1].begin(), ans[1].end());
+  return ans;
+}
+vector<int> Solution::solution_2028(vector<int>& rolls, int mean, int n) {
+  int rem = mean * (n + rolls.size()) - reduce(rolls.begin(), rolls.end());
+  if (rem < n || rem > n * 6) {
+    return {};
+  }
+  int avg = rem / n, extra = rem % n;
+  vector<int> ans(extra, avg + 1);
+  ans.insert(ans.end(), n - extra, avg);
   return ans;
 }
 }  // namespace MySolution

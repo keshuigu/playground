@@ -84,6 +84,7 @@ class Solution {
   int solution_2391(vector<string>& garbage, vector<int>& travel);
   int solution_2244(vector<int>& tasks);
   vector<vector<int>> solution_2225(vector<vector<int>>& matches);
+  vector<int> solution_2028(vector<int>& rolls, int mean, int n);
   /* solution 2001 - 2500 */
 
   /* solution 2501 - 3000 */

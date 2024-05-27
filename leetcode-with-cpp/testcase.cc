@@ -755,4 +755,19 @@ void Test::test_1738() {
   cout << Solution().solution_1738(matrix, 4) << endl;
 }
 
+void Test::test_2028() {
+  vector<int> arr = {3, 2, 4, 3};
+  vector<int> ans = Solution().solution_2028(arr, 4, 2);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+  arr = {1, 5, 6};
+  ans = Solution().solution_2028(arr, 3, 4);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+}
+
 }  // namespace Testcase

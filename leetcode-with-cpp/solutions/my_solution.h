@@ -103,6 +103,7 @@ class Solution {
                             int valueDifference);
   int solution_2769(int num, int t);
   int solution_2831(vector<int>& nums, int k);
+  vector<int> solution_2951(vector<int>& mountain);
   /* solution 2501 - 3000 */
 };
 }  // namespace MySolution

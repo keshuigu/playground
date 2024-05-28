@@ -234,4 +234,13 @@ int Solution::solution_2831(vector<int>& nums, int k) {
   }
   return ans;
 }
+vector<int> Solution::solution_2951(vector<int>& mountain) {
+  vector<int> ans;
+  for (int i = 1; i < mountain.size() - 1; i++) {
+    if (mountain[i] > mountain[i - 1] && mountain[i] > mountain[i + 1]) {
+      ans.push_back(i);
+    }
+  }
+  return ans;
+}
 }  // namespace MySolution

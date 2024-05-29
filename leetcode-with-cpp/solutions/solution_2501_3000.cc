@@ -13,6 +13,7 @@ using std::array;
 using std::deque;
 using std::function;
 using std::get;
+using std::greater;
 using std::lower_bound;
 using std::max;
 using std::min;
@@ -242,5 +243,25 @@ vector<int> Solution::solution_2951(vector<int>& mountain) {
     }
   }
   return ans;
+}
+
+int Solution::solution_2981(string s) {
+  unordered_map<char, vector<int>> map;
+  int start = 0;
+  for (int i = 0; i < s.size(); i++) {
+    if (i != s.size() - 1 and s[i] == s[i + 1]) {
+      continue;
+    }
+    map[s[start]].push_back(i - start + 1);
+    start = i + 1;
+  }
+  int ans = 0;
+  for (auto&& [c, v] : map) {
+    sort(v.begin(), v.end(), greater<int>());
+    v.push_back(0);
+    v.push_back(0);
+    ans = max({ans, v[0] - 2, min(v[0] - 1, v[1]), v[2]});
+  }
+  return ans == 0 ? -1 : ans;
 }
 }  // namespace MySolution

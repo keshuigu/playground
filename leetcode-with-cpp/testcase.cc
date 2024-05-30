@@ -789,4 +789,9 @@ void Test::test_2981() {
   cout << Solution().solution_2981("abcdef") << endl;
   cout << Solution().solution_2981("abcaba") << endl;
 }
+void Test::test_2982() {
+  cout << Solution().solution_2982("aaaa") << endl;
+  cout << Solution().solution_2982("abcdef") << endl;
+  cout << Solution().solution_2982("abcaba") << endl;
+}
 }  // namespace Testcase

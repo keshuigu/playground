@@ -264,4 +264,5 @@ int Solution::solution_2981(string s) {
   }
   return ans == 0 ? -1 : ans;
 }
+int Solution::solution_2982(string s) { return solution_2981(s); }
 }  // namespace MySolution

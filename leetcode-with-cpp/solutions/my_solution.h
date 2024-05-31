@@ -106,6 +106,7 @@ class Solution {
   vector<int> solution_2951(vector<int>& mountain);
   int solution_2981(string s);
   int solution_2982(string s);
+  vector<int> solution_2965(vector<vector<int>>& grid);
   /* solution 2501 - 3000 */
 };
 }  // namespace MySolution

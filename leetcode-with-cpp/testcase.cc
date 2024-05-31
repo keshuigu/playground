@@ -794,4 +794,9 @@ void Test::test_2982() {
   cout << Solution().solution_2982("abcdef") << endl;
   cout << Solution().solution_2982("abcaba") << endl;
 }
+void Test::test_2965() {
+  vector<vector<int>> grid = {{1, 3}, {2, 2}};
+  vector<int> ans = Solution().solution_2965(grid);
+  cout << ans[0] << ans[1] << endl;
+}
 }  // namespace Testcase

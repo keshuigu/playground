@@ -94,4 +94,5 @@ void getTestcase(map<string, function<void()>>& testMap, Testcase::Test& t) {
   testMap["2951"] = bind(&Testcase::Test::test_2951, &t);
   testMap["2981"] = bind(&Testcase::Test::test_2981, &t);
   testMap["2982"] = bind(&Testcase::Test::test_2982, &t);
+  testMap["2965"] = bind(&Testcase::Test::test_2965, &t);
 }

@@ -265,4 +265,18 @@ int Solution::solution_2981(string s) {
   return ans == 0 ? -1 : ans;
 }
 int Solution::solution_2982(string s) { return solution_2981(s); }
+vector<int> Solution::solution_2965(vector<vector<int>>& grid) {
+  int n = grid.size();
+  int m = n * n;
+  int d1 = -m * (m + 1) / 2;
+  long long d2 = (long long)-m * (m + 1) * (m * 2 + 1) / 6;
+  for (auto& row : grid) {
+    for (int x : row) {
+      d1 += x;
+      d2 += x * x;
+    }
+  }
+  int d = d2 / d1;
+  return {(d + d1) / 2, (d - d1) / 2};
+}
 }  // namespace MySolution

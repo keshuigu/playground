@@ -279,4 +279,12 @@ vector<int> Solution::solution_2965(vector<vector<int>>& grid) {
   int d = d2 / d1;
   return {(d + d1) / 2, (d - d1) / 2};
 }
+int Solution::solution_2928(int n, int limit) {
+  function<int(int)> c2 = [](int n) -> int {
+    return n > 1 ? n * (n - 1) / 2 : 0;
+  };
+  return c2(n + 2) - 3 * c2(n - limit + 1) + 3 * c2(n - 2 * limit) -
+         c2(n - 3 * limit - 1);
+}
+
 }  // namespace MySolution

@@ -42,6 +42,7 @@ class Solution {
   int solution_994(vector<vector<int>>& grid);
   int solution_826(vector<int>& difficulty, vector<int>& profit,
                    vector<int>& worker);
+  int solution_575(vector<int>& candyType);
   /* solution 501 - 1000 */
 
   /* solution 1001 - 1500 */
@@ -107,6 +108,7 @@ class Solution {
   int solution_2981(string s);
   int solution_2982(string s);
   vector<int> solution_2965(vector<vector<int>>& grid);
+  int solution_2928(int n, int limit);
   /* solution 2501 - 3000 */
 };
 }  // namespace MySolution

@@ -77,6 +77,8 @@ class Test {
   void test_2981();
   void test_2982();
   void test_2965();
+  void test_2928();
+  void test_575();
 };
 
 }  // namespace Testcase

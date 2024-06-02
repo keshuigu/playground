@@ -262,5 +262,9 @@ int Solution::solution_826(vector<int>& difficulty, vector<int>& profit,
   }
   return ans;
 }
+int Solution::solution_575(vector<int>& candyType) {
+  unordered_set<int> s(candyType.begin(), candyType.end());
+  return min(candyType.size() / 2, s.size());
+}
 
 }  // namespace MySolution

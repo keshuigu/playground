@@ -799,4 +799,17 @@ void Test::test_2965() {
   vector<int> ans = Solution().solution_2965(grid);
   cout << ans[0] << ans[1] << endl;
 }
+
+void Test::test_2928() {
+  cout << Solution().solution_2928(5, 2) << endl;
+  cout << Solution().solution_2928(3, 3) << endl;
+}
+void Test::test_575() {
+  vector<int> arr = {1, 1, 2, 2, 3, 3};
+  cout << Solution().solution_575(arr) << endl;
+  arr = {1, 1, 2, 3};
+  cout << Solution().solution_575(arr) << endl;
+  arr = {6, 6, 6, 6};
+  cout << Solution().solution_575(arr) << endl;
+}
 }  // namespace Testcase

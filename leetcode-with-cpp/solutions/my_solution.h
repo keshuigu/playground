@@ -58,6 +58,7 @@ class Solution {
   int solution_1235(vector<int>& startTime, vector<int>& endTime,
                     vector<int>& profit);
   int solution_1463(vector<vector<int>>& grid);
+  vector<int> solution_1103(int candies, int num_people);
   /* solution 1001 - 1500 */
 
   /* solution 1501 - 2000 */

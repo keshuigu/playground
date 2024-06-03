@@ -812,4 +812,17 @@ void Test::test_575() {
   arr = {6, 6, 6, 6};
   cout << Solution().solution_575(arr) << endl;
 }
+
+void Test::test_1103() {
+  vector<int> ans = Solution().solution_1103(7, 4);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+  ans = Solution().solution_1103(10, 3);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+}
 }  // namespace Testcase

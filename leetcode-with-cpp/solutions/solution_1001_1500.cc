@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <climits>
+#include <cmath>
 #include <functional>
 #include <numeric>
 #include <set>
@@ -17,6 +18,7 @@ using std::minmax_element;
 using std::multiset;
 using std::pair;
 using std::sort;
+using std::sqrt;
 using std::upper_bound;
 int Solution::solution_1004(vector<int>& nums, int k) {
   int left = 0, ans = 0, cnt = 0;
@@ -174,5 +176,16 @@ int Solution::solution_1463(vector<vector<int>>& grid) {
   }
   return ans;
 }
-
+vector<int> Solution::solution_1103(int candies, int num_people) {
+  int n = num_people;
+  int m = static_cast<int>(sqrt(8.0 * candies + 1) - 1) / 2;
+  int k = m / n, extra = m % n;
+  vector<int> ans(n);
+  for (int i = 0; i < n; i++) {
+    ans[i] =
+        k * (k - 1) / 2 * n + k * (i + 1) + (i < extra ? k * n + i + 1 : 0);
+  }
+  ans[extra] += candies - m * (m + 1) / 2;
+  return ans;
+}
 }  // namespace MySolution

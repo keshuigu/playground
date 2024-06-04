@@ -1,4 +1,4 @@
-add_library(solutions data_struct.cc solution_1_500.cc solution_501_1000.cc solution_1001_1500.cc  solution_1501_2000.cc solution_2001_2500.cc solution_2501_3000.cc )
+add_library(solutions data_struct.cc solution_1_500.cc solution_501_1000.cc solution_1001_1500.cc  solution_1501_2000.cc solution_2001_2500.cc solution_2501_3000.cc solution_3001_3500.cc)
 target_include_directories(
   solutions
   PUBLIC

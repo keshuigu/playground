@@ -825,4 +825,20 @@ void Test::test_1103() {
   }
   cout << endl;
 }
+
+void Test::test_3067() {
+  vector<vector<int>> edges = {
+      {0, 1, 1}, {1, 2, 5}, {2, 3, 13}, {3, 4, 9}, {4, 5, 2}};
+  vector<int> ans = Solution().solution_3067(edges, 1);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+  edges = {{0, 6, 3}, {6, 5, 3}, {0, 3, 1}, {3, 2, 7}, {3, 1, 6}, {3, 4, 2}};
+  ans = Solution().solution_3067(edges, 3);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+}
 }  // namespace Testcase

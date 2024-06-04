@@ -111,6 +111,10 @@ class Solution {
   vector<int> solution_2965(vector<vector<int>>& grid);
   int solution_2928(int n, int limit);
   /* solution 2501 - 3000 */
+
+  /* solution 3001 - 3500 */
+  vector<int> solution_3067(vector<vector<int>>& edges, int signalSpeed);
+  /* solution 3001 - 3500 */
 };
 }  // namespace MySolution
 

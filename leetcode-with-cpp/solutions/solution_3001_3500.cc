@@ -1,9 +1,13 @@
+#include <algorithm>
 #include <functional>
+#include <ranges>
 #include <utility>
 
+#include "data_struct.h"
 #include "my_solution.h"
 using std::function;
 using std::pair;
+using std::unique;
 namespace MySolution {
 
 vector<int> Solution::solution_3067(vector<vector<int>>& edges,
@@ -35,4 +39,30 @@ vector<int> Solution::solution_3067(vector<vector<int>>& edges,
   }
   return ans;
 }
+vector<int> Solution::solution_3072(vector<int>& nums) {
+  auto sorted = nums;
+  std::ranges::sort(sorted);
+  sorted.erase(unique(sorted.begin(), sorted.end()), sorted.end());
+  int m = sorted.size();
+  vector<int> a{nums[0]}, b{nums[1]};
+  MyDataStruct::Fenwick t1(m + 1), t2(m + 1);
+  t1.add(std::ranges::lower_bound(sorted, nums[0]) - sorted.begin() + 1);
+  t2.add(std::ranges::lower_bound(sorted, nums[1]) - sorted.begin() + 1);
+  for (int i = 2; i < nums.size(); i++) {
+    int x = nums[i];
+    int v = std::ranges::lower_bound(sorted, x) - sorted.begin() + 1;
+    int gc1 = a.size() - t1.pre(v);
+    int gc2 = b.size() - t2.pre(v);
+    if (gc1 > gc2 || gc1 == gc2 && a.size() <= b.size()) {
+      a.push_back(x);
+      t1.add(v);
+    } else {
+      b.push_back(x);
+      t2.add(v);
+    }
+  }
+  a.insert(a.end(), b.begin(), b.end());
+  return a;
+}
+
 }  // namespace MySolution

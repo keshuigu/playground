@@ -132,6 +132,16 @@ class SnapshotArray {
   // 每个index的历史修改记录
   std::unordered_map<int, std::vector<std ::pair<int, int>>> hitory_;
 };
+
+class Fenwick {
+ public:
+  explicit Fenwick(int n);
+  ~Fenwick();
+  std::vector<int> tree;
+  void add(int i);
+  int pre(int i);
+};
+
 }  // namespace MyDataStruct
 
 #endif

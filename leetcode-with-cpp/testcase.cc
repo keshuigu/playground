@@ -841,4 +841,19 @@ void Test::test_3067() {
   }
   cout << endl;
 }
+
+void Test::test_3072() {
+  vector<int> edges = {2, 1, 3, 3};
+  vector<int> ans = Solution().solution_3072(edges);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+  edges = {5, 14, 3, 1, 2};
+  ans = Solution().solution_3072(edges);
+  for (auto &&x : ans) {
+    cout << x << " ";
+  }
+  cout << endl;
+}
 }  // namespace Testcase

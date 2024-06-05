@@ -6,9 +6,10 @@
 #include <queue>
 #include <ranges>
 #include <utility>
-using namespace MyDataStruct;
+namespace MyDataStruct {
+
 using namespace std;
-ostream &MyDataStruct::operator<<(ostream &os, const TreeNode *t) {
+ostream &operator<<(ostream &os, const TreeNode *t) {
   queue<const TreeNode *> q;
   q.push(t);
   os << t->val << " ";
@@ -35,7 +36,7 @@ ostream &MyDataStruct::operator<<(ostream &os, const TreeNode *t) {
   return os;
 }
 
-TreeNode *MyDataStruct::construct_binary_tree(const vector<int> &vec) {
+TreeNode *construct_binary_tree(const vector<int> &vec) {
   vector<TreeNode *> vecTree(vec.size(), nullptr);
   TreeNode *root = nullptr;
   for (int i = 0; i < vec.size(); i++) {
@@ -175,7 +176,7 @@ vector<string> ThroneIneritance::getInheritanceOrder() {
   return ans;
 }
 
-ostream &MyDataStruct::operator<<(ostream &os, const ListNode *t) {
+ostream &operator<<(ostream &os, const ListNode *t) {
   while (t) {
     os << t->val;
     t = t->next;
@@ -318,3 +319,20 @@ int SnapshotArray::get(int index, int snap_id) {
   int j = ranges::lower_bound(h, make_pair(snap_id + 1, 0)) - h.begin() - 1;
   return j >= 0 ? h[j].second : 0;
 }
+Fenwick::Fenwick(int n) : tree(n) {}
+Fenwick::~Fenwick() {}
+void Fenwick::add(int i) {
+  while (i < tree.size()) {
+    tree[i]++;
+    i += i & -i;
+  }
+}
+int Fenwick::pre(int i) {
+  int res = 0;
+  while (i > 0) {
+    res += tree[i];
+    i &= i - 1;
+  }
+  return res;
+}
+}  // namespace MyDataStruct

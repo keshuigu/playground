@@ -286,5 +286,15 @@ int Solution::solution_2928(int n, int limit) {
   return c2(n + 2) - 3 * c2(n - limit + 1) + 3 * c2(n - 2 * limit) -
          c2(n - 3 * limit - 1);
 }
-
+long long Solution::solution_2938(string s) {
+  long long ans = 0, cnt1 = 0;
+  for (auto&& c : s) {
+    if (c == '1') {
+      cnt1++;
+    } else {
+      ans += cnt1;
+    }
+  }
+  return ans;
+}
 }  // namespace MySolution

@@ -110,6 +110,7 @@ class Solution {
   int solution_2982(string s);
   vector<int> solution_2965(vector<vector<int>>& grid);
   int solution_2928(int n, int limit);
+  long long solution_2938(string s);
   /* solution 2501 - 3000 */
 
   /* solution 3001 - 3500 */

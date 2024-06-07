@@ -116,6 +116,7 @@ class Solution {
   /* solution 3001 - 3500 */
   vector<int> solution_3067(vector<vector<int>>& edges, int signalSpeed);
   vector<int> solution_3072(vector<int>& nums);
+  int solution_3038(vector<int>& nums);
   /* solution 3001 - 3500 */
 };
 }  // namespace MySolution

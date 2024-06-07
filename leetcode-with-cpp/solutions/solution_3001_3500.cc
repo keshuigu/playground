@@ -64,5 +64,18 @@ vector<int> Solution::solution_3072(vector<int>& nums) {
   a.insert(a.end(), b.begin(), b.end());
   return a;
 }
+int Solution::solution_3038(vector<int>& nums) {
+  int ans = 1;
+  int last = nums[0] + nums[1];
+  int i = 2;
+  while (i < nums.size() - 1) {
+    if (nums[i] + nums[i + 1] != last) {
+      return ans;
+    }
+    i += 2;
+    ans++;
+  }
+  return ans;
+}
 
 }  // namespace MySolution

@@ -876,4 +876,10 @@ void Test::test_3040() {
   nums = {1, 1, 1, 1, 1, 1};
   cout << Solution().solution_3040(nums) << endl;
 }
+void Test::test_312() {
+  vector<int> nums = {3, 1, 5, 8};
+  cout << Solution().solution_312(nums) << endl;
+  nums = {1, 5};
+  cout << Solution().solution_312(nums) << endl;
+}
 }  // namespace Testcase

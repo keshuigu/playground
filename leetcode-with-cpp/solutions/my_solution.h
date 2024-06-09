@@ -27,6 +27,7 @@ class Solution {
   vector<vector<int>> solution_39(vector<int>& candidates, int target);
   vector<vector<int>> solution_216(int k, int n);
   int solution_377(vector<int>& nums, int target);
+  int solution_312(vector<int>& nums);
   /* solution 1 - 500 */
 
   /* solution 501 - 1000 */

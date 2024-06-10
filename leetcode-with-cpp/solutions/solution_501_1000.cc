@@ -266,5 +266,17 @@ int Solution::solution_575(vector<int>& candyType) {
   unordered_set<int> s(candyType.begin(), candyType.end());
   return min(candyType.size() / 2, s.size());
 }
-
+int Solution::solution_881(vector<int>& people, int limit) {
+  sort(people.begin(), people.end());
+  int left = 0, right = people.size() - 1;
+  int ans = 0;
+  while (left < right) {
+    if (people[left] + people[right] <= limit) {
+      left++;
+    }
+    ans++;
+    right--;
+  }
+  return ans + (left == right ? 1 : 0);
+}
 }  // namespace MySolution

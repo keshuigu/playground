@@ -882,4 +882,12 @@ void Test::test_312() {
   nums = {1, 5};
   cout << Solution().solution_312(nums) << endl;
 }
+void Test::test_881() {
+  vector<int> nums = {1, 2};
+  cout << Solution().solution_881(nums, 3) << endl;
+  nums = {3, 2, 2, 1};
+  cout << Solution().solution_881(nums, 3) << endl;
+  nums = {3, 5, 3, 4};
+  cout << Solution().solution_881(nums, 5) << endl;
+}
 }  // namespace Testcase

@@ -297,4 +297,16 @@ long long Solution::solution_2938(string s) {
   }
   return ans;
 }
+int Solution::solution_2806(int purchaseAmount) {
+  int a = 10 * (purchaseAmount / 10);
+  int b = a + 10;
+  int x = 0;
+  if (purchaseAmount - a < b - purchaseAmount) {
+    x = a;
+  } else {
+    x = b;
+  }
+  return 100 - x;
+}
+
 }  // namespace MySolution

@@ -28,6 +28,7 @@ class Solution {
   vector<vector<int>> solution_216(int k, int n);
   int solution_377(vector<int>& nums, int target);
   int solution_312(vector<int>& nums);
+  int solution_419(vector<vector<char>>& board);
   /* solution 1 - 500 */
 
   /* solution 501 - 1000 */
@@ -113,6 +114,7 @@ class Solution {
   vector<int> solution_2965(vector<vector<int>>& grid);
   int solution_2928(int n, int limit);
   long long solution_2938(string s);
+  int solution_2806(int purchaseAmount);
   /* solution 2501 - 3000 */
 
   /* solution 3001 - 3500 */

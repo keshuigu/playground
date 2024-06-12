@@ -890,4 +890,15 @@ void Test::test_881() {
   nums = {3, 5, 3, 4};
   cout << Solution().solution_881(nums, 5) << endl;
 }
+void Test::test_419() {
+  vector<vector<char>> board = {
+      {'X', '.', '.', 'X'}, {'.', '.', '.', 'X'}, {'.', '.', '.', 'X'}};
+  cout << Solution().solution_419(board) << endl;
+  board = {{'.'}};
+  cout << Solution().solution_419(board) << endl;
+}
+void Test::test_2806() {
+  cout << Solution().solution_2806(9) << endl;
+  cout << Solution().solution_2806(15) << endl;
+}
 }  // namespace Testcase

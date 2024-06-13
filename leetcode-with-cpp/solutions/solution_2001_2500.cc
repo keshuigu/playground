@@ -273,4 +273,5 @@ vector<int> Solution::solution_2028(vector<int>& rolls, int mean, int n) {
   ans.insert(ans.end(), n - extra, avg);
   return ans;
 }
+
 }  // namespace MySolution

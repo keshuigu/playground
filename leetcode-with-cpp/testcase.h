@@ -89,6 +89,7 @@ class Test {
   void test_881();
   void test_419();
   void test_2806();
+  void test_2813();
 };
 
 }  // namespace Testcase

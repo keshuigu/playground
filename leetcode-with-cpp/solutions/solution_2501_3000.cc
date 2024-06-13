@@ -3,6 +3,7 @@
 #include <deque>
 #include <functional>
 #include <ranges>
+#include <stack>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
@@ -18,6 +19,7 @@ using std::lower_bound;
 using std::max;
 using std::min;
 using std::sort;
+using std::stack;
 using std::to_string;
 using std::unordered_map;
 using std::unordered_set;
@@ -308,5 +310,26 @@ int Solution::solution_2806(int purchaseAmount) {
   }
   return 100 - x;
 }
-
+long long Solution::solution_2813(vector<vector<int>>& items, int k) {
+  std::ranges::sort(items,
+                    [](const auto& a, const auto& b) { return a[0] > b[0]; });
+  long long ans = 0, total_profit = 0;
+  unordered_set<int> vis;
+  stack<int> dup;
+  for (int i = 0; i < items.size(); i++) {
+    int profit = items[i][0], category = items[i][1];
+    if (i < k) {
+      total_profit += profit;
+      if (!vis.insert(category).second) {
+        dup.push(profit);
+      }
+    } else if (!dup.empty() && vis.insert(category).second) {
+      total_profit += profit - dup.top();
+      dup.pop();
+    }
+    ans =
+        max(ans, total_profit + (long long)vis.size() * (long long)vis.size());
+  }
+  return ans;
+}
 }  // namespace MySolution

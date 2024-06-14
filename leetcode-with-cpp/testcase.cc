@@ -908,4 +908,10 @@ void Test::test_2813() {
   edges = {{3, 1}, {3, 1}, {2, 2}, {5, 3}};
   cout << Solution().solution_2813(edges, 3) << endl;
 }
+void Test::test_2786() {
+  vector<int> nums = {2, 3, 6, 1, 9, 2};
+  cout << Solution().solution_2786(nums, 5) << endl;
+  nums = {2, 4, 6, 8};
+  cout << Solution().solution_2786(nums, 3) << endl;
+}
 }  // namespace Testcase

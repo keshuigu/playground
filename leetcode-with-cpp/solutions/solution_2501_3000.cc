@@ -332,4 +332,14 @@ long long Solution::solution_2813(vector<vector<int>>& items, int k) {
   }
   return ans;
 }
+long long Solution::solution_2786(vector<int>& nums, int x) {
+  long long f[2]{};
+  for (int i = nums.size() - 1; i >= 0; i--) {
+    int v = nums[i];
+    int r = v % 2;
+    f[r] = max(f[r], f[r ^ 1] - x) + v;
+  }
+  return f[nums[0] % 2];
+}
+
 }  // namespace MySolution

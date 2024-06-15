@@ -17,6 +17,7 @@ using std::get;
 using std::greater;
 using std::lower_bound;
 using std::max;
+using std::max_element;
 using std::min;
 using std::sort;
 using std::stack;
@@ -341,5 +342,18 @@ long long Solution::solution_2786(vector<int>& nums, int x) {
   }
   return f[nums[0] % 2];
 }
-
+int Solution::solution_2779(vector<int>& nums, int k) {
+  int m = *max_element(nums.begin(), nums.end());
+  vector<int> d(m + k * 2 + 2);
+  for (auto&& x : nums) {
+    d[x]++;
+    d[x + k * 2 + 1]--;
+  }
+  int ans = 0, s = 0;
+  for (auto&& x : d) {
+    s += x;
+    ans = max(ans, s);
+  }
+  return ans;
+}
 }  // namespace MySolution

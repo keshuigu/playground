@@ -117,6 +117,7 @@ class Solution {
   int solution_2806(int purchaseAmount);
   long long solution_2813(vector<vector<int>>& items, int k);
   long long solution_2786(vector<int>& nums, int x);
+  int solution_2779(vector<int>& nums, int k);
   /* solution 2501 - 3000 */
 
   /* solution 3001 - 3500 */

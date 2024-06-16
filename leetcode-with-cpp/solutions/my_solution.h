@@ -46,6 +46,7 @@ class Solution {
                    vector<int>& worker);
   int solution_575(vector<int>& candyType);
   int solution_881(vector<int>& people, int limit);
+  int solution_521(string a, string b);
   /* solution 501 - 1000 */
 
   /* solution 1001 - 1500 */

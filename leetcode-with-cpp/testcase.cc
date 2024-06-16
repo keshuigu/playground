@@ -920,4 +920,9 @@ void Test::test_2779() {
   nums = {1, 1, 1, 1};
   cout << Solution().solution_2779(nums, 10) << endl;
 }
+void Test::test_521() {
+  cout << Solution().solution_521("aba", "cdc") << endl;
+  cout << Solution().solution_521("aaa", "bbb") << endl;
+  cout << Solution().solution_521("aaa", "aaa") << endl;
+}
 }  // namespace Testcase

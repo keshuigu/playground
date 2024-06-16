@@ -279,4 +279,7 @@ int Solution::solution_881(vector<int>& people, int limit) {
   }
   return ans + (left == right ? 1 : 0);
 }
+int Solution::solution_521(string a, string b) {
+  return a.compare(b) == 0 ? -1 : max(a.size(), b.size());
+}
 }  // namespace MySolution

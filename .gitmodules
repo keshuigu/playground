@@ -1,6 +1,3 @@
-[submodule "projects/leveldb"]
-	path = projects/leveldb
-	url = git@github.com:keshuigu/leveldb.git
 [submodule "projects/myleveldb"]
 	path = projects/myleveldb
 	url = git@github.com:keshuigu/myleveldb.git

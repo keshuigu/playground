@@ -216,7 +216,7 @@ $$\begin{equation}
 
 ![](https://cdn.jsdelivr.net/gh/keshuigu/images@main/imgs/202408141425724.png)
 
-因此，我们已经证明，在每一步，$x_{t-1}\sim q( x{t-1} | x_t , x_0)$都是正态分布的，均值$\mu_q( x_t , x_0)$是$x_t$和$x_0$的函数，方差$\Sigma_q ( t )$是$\alpha$系数的函数。这些$\alpha$系数是已知的，并且在每个时间步都是固定的；它们要么在被建模为超参数时被永久设置，要么被视为寻求对其进行建模的网络的当前推理输出。根据上面的结果，我们可以将方差方程改写为$\Sigma_q(t) = \sigma^2_q ( t ) I$。其中：
+因此，我们已经证明，在每一步，$x_{t-1}\sim q( x_{t-1} | x_t , x_0)$都是正态分布的，均值$\mu_q( x_t , x_0)$是$x_t$和$x_0$的函数，方差$\Sigma_q ( t )$是$\alpha$系数的函数。这些$\alpha$系数是已知的，并且在每个时间步都是固定的；它们要么在被建模为超参数时被永久设置，要么被视为寻求对其进行建模的网络的当前推理输出。根据上面的结果，我们可以将方差方程改写为$\Sigma_q(t) = \sigma^2_q ( t ) I$。其中：
 
 $$\begin{equation}
   \sigma^2_q ( t ) = \frac{(1-\alpha_t)(1 - \overline{\alpha}_{t-1})}{1-\overline{\alpha}_t}
@@ -274,4 +274,74 @@ $$\begin{equation}
 
 ## 优化扩散模型参数
 
-让我们研究如何联合学习VDM的噪声参数。一种潜在的方法是使用参数为$\eta$的神经网络$\hat{\alpha}_\eta ( t )$对$\alpha_t$建模。然而，这是很低效的，因为在每个时间步t必须执行多次推理。而缓存可以减轻这种计算成本，我们也可以推导出一种学习扩散噪声参数的替代方法。将方差方程代入推导每步目标，可得
+让我们研究如何联合学习VDM的噪声参数。一种潜在的方法是使用参数为$\eta$的神经网络$\hat{\alpha}_\eta ( t )$对$\alpha_t$建模。然而，这是很低效的，因为在每个时间步t必须执行多次推理。而缓存可以减轻这种计算成本，我们也可以推导出一种学习扩散噪声参数的替代方法。将方差方程代入推导每步目标，可得：
+
+![](https://cdn.jsdelivr.net/gh/keshuigu/images@main/imgs/202408150927876.png)
+
+顾名思义，SNR表示原始信号与存在的噪声量之间的比值；信噪比越高代表信号越多，信噪比越低代表噪声越多。在扩散模型中，我们要求SNR随时间t单调递减；这形式化了扰动输入xt随时间变得越来越嘈杂的概念，直到它在t = T时与标准高斯一致。在对上述目标进行简化后，我们可以使用神经网络直接参数化每个时间步的SNR，并与扩散模型一起学习。由于SNR必须随时间单调递减，我们可以将其表示为：
+
+$$\begin{equation}
+  SNR(t) = \exp{(-\omega_\eta(t))}
+\end{equation}$$
+
+其中$\omega_\eta(t)$被建模为一个参数为η的单调递增神经网络。$-\omega_\eta(t)$导致单调递减的函数，而指数迫使结果项为正。结合$sigmoid = \frac{1}{1+e^{-x}}$我们还可以显式地得到以下形式：
+
+$$\begin{equation}
+  \frac{\overline{\alpha}_t}{1- \overline{\alpha}_t} = \exp{(-\omega_\eta(t))}
+\end{equation}$$
+
+$$\begin{equation}
+  \overline{\alpha}_t = sigmoid(-\omega_\eta(t))
+\end{equation}$$
+
+$$\begin{equation}
+  1 - \overline{\alpha}_t = sigmoid(\omega_\eta(t))
+\end{equation}$$
+
+
+## 三种等价解释
+
+正如我们之前所证明的那样，变分扩散模型可以通过简单地学习一个神经网络来训练，从一个任意的噪声版本xt和它的时间指数t来预测原始自然图像x0。然而，x0有另外两种等价的参数化，这导致了对一个VDM的两种进一步的解释。首先，我们可以利用重新参数化技巧。在我们对$q ( x_t | x_0 )$形式的推导中，我们可以整理结果，将$x_0$视为变量，来得到以下结果：
+
+$$\begin{equation}
+  x_0 = \frac{x_t - \sqrt{1-\overline{\alpha}_t}\epsilon_0}{\sqrt{\overline{\alpha}_t}}
+\end{equation}$$
+
+将其代入我们之前推导的真去噪转移均值$\mu_q( x_t , x_0)$，我们可以重新推导为：
+
+![](https://cdn.jsdelivr.net/gh/keshuigu/images@main/imgs/202408151012231.png)
+
+
+这里学习从x0中确定xt的源噪声。因此，我们已经表明，通过预测原始图像x0来学习VDM等价于学习预测噪声；然而，在实证方面，一些工作发现预测噪声可以获得更好的性能
+
+为了得到变分扩散模型的第三种常见解释，我们借助特威迪公式。在英语中，特威迪的公式指出，给定一个指数族分布的样本，它的真实均值可以通过样本的极大似然估计(也就是经验均值)加上一些包含估计得分的修正项来估计。在只有一个观测样本的情况下，经验均值只是样本本身。它常用于缓解样本偏差；如果观测样本全部位于潜在分布的一端，则负分数变大，并将样本的朴素极大似然估计修正为真实均值。
+
+在数学上，对于一个高斯变量$z\sim \mathcal{N} ( z ; \mu_z , \Sigma_z)$，特威迪的公式为：
+
+$$\mathbb{E}[\mu_z | z] = z + \Sigma_z\nabla_z\log{p(z)}$$
+
+在这种情况下，我们应用它来预测给定样本的$x_t$的真实后验均值。由之前的结果：
+
+$$q(x_t|x_0) = \mathcal{N}(x_t;\sqrt{\overline{\alpha}_t}x_0,(1-\overline{\alpha}_t)I)$$
+
+然后，由特威迪的公式，我们有：
+
+$$\begin{equation}
+  \mathbb{E}[\mu_{x_t} | x_t] = x_t + (1-\overline{\alpha_t})\nabla_{x_t}\log{p(x_t)}
+\end{equation}$$
+
+根据特威迪公式，真实均值最佳估计定义为：
+
+$$\begin{equation}
+  \sqrt{\overline{\alpha}_t}x_0 = x_t + (1-\overline{\alpha_t})\nabla_{x_t}\log{p(x_t)}
+\end{equation}$$
+
+$$\begin{equation}
+  x_0 =\frac{ x_t + (1-\overline{\alpha_t})\nabla_{x_t}\log{p(x_t)}}{\sqrt{\overline{\alpha}_t}}
+\end{equation}$$
+
+然后，我们可以将上述方程再次代入我们的$\mu_q( x_t , x_0)$并推导出新的形式：
+
+
+
+这里，学习预测得分函数$\nabla_{x_t}\log{p(x_t)}$，它是对于任意的噪声水平t,$x_t$在数据空间的梯度，

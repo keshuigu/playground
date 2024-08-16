@@ -102,7 +102,7 @@ $$
      - $$L_{t-1}=\mathbb{E_{q(x_t|x_0)}[\frac{1}{2\sigma^2_t}\Vert \widetilde{\mu}_t(x_t,x_0)-\mu(x_t,t) \Vert^2]}$$
      -从上述公式来看，我们是希望网络学习到的均值和后验分布的均值一致。不过DDPM发现预测均值并不是最好的选择。由原来的预测均值而换成预测噪音效果更好
 
-4. 最终优化目标：$L^{simple}_{t-1}=\mathbb{E}_{x_0,\epsilon \sim \mathcal{N}(0,I)}[\lVert \epsilon - \epsilon_\theta (\sqrt{\overline{\alpha}_t}x_0 + \sqrt{1 - \overline{\alpha}_t}\epsilon,t)\rVert]$，其中t在[1,T]范围内取值，取1是即$L_0$，因此简化后的优化目标中并没有1中的负对数似然
+4. 最终优化目标：$L^{simple}_{t-1}=\mathbb{E}_{x_0,\epsilon \sim \mathcal{N}(0,I)}[\lVert \epsilon - \epsilon_\theta (\sqrt{\overline{\alpha}_t}x_0 + \sqrt{1 - \overline{\alpha}_t}\epsilon,t)\rVert^2_2]$，其中t在[1,T]范围内取值，取1是即$L_0$，因此简化后的优化目标中并没有1中的负对数似然
 
 5. 虽然扩散模型背后的推导比较复杂，但是我们最终得到的优化目标非常简单，就是让网络预测的噪音和真实的噪音一致。DDPM的训练过程也非常简单，：随机选择一个训练样本->从1-T随机抽样一个t->随机产生噪音-计算当前所产生的带噪音数据->输入网络预测噪音->计算产生的噪音和预测的噪音的L2损失->计算梯度并更新网络。
 

@@ -24,6 +24,6 @@ int printva(std::string prefix, ...) {
 }
 
 int main() {
-  printva("test", 1, 2, 3);
-  printva("test", 1, 2);
+  printva("test", 1, 2, 3, 0);
+  printva("test", 1, 2, 0);
 }

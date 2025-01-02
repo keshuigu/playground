@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 
+using std::array;
 using std::cout;
+using std::deque;
+using std::function;
 using std::max;
 using std::min;
 using std::pair;
@@ -262,6 +265,264 @@ class Solution {
     }
     return ans;
   }
+
+  vector<int> findAnagrams(string s, string p) {
+    int n = s.size();
+    int m = p.size();
+    unordered_map<char, int> ms;
+    unordered_map<char, int> mp;
+    for (auto&& x : p) {
+      mp[x]++;
+    }
+    int left = 0;
+    vector<int> ans;
+    for (int right = 0; right < n; right++) {
+      ms[s[right]]++;
+      if (right < m - 1) {
+        continue;
+      }
+      if (compareUnorderedMaps(ms, mp)) {
+        ans.push_back(left);
+      }
+      ms[s[left]]--;
+      if (ms[s[left]] == 0) {
+        ms.erase(s[left]);
+      }
+      left++;
+    }
+    return ans;
+  }
+
+  vector<int> findAnagramsRef(string s, string p) {
+    vector<int> ans;
+    array<int, 26> cnt_p{};
+    array<int, 26> cnt_s{};
+    for (auto&& x : p) {
+      cnt_p[x - 'a']++;
+    }
+    for (int right = 0; right < s.size(); right++) {
+      cnt_s[s[right] - 'a']++;
+      int left = right - p.size() + 1;
+      if (left < 0) {
+        continue;
+      }
+      if (cnt_s == cnt_p) {
+        ans.push_back(left);
+      }
+      cnt_s[s[left] - 'a']--;
+    }
+    return ans;
+  }
+
+  int subarraySum(vector<int>& nums, int k) {
+    int cnt = 0;
+    int n = nums.size();
+    vector<int> pre(n + 1);
+    for (int i = 0; i < n; i++) {
+      pre[i + 1] = pre[i] + nums[i];
+    }
+    // 两数之和
+    unordered_map<int, int> s;
+    for (int i = 0; i < n + 1; i++) {
+      auto it = s.find(pre[i] - k);
+      if (it != s.end()) {
+        cnt += (*it).second;
+      }
+      s[pre[i]]++;
+    }
+    return cnt;
+  }
+
+  vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+    // 懒删除堆
+    auto cmp = [](const pair<int, int>& a, const pair<int, int>& b) -> bool {
+      return a.first < b.first;
+    };
+    priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(cmp)> pq(
+        cmp);
+    int left = 0;
+    vector<int> ans;
+    for (int right = 0; right < nums.size(); right++) {
+      pq.push({nums[right], right});
+      if (right < k - 1) {
+        continue;
+      }
+      while (pq.top().second < left) {
+        pq.pop();
+      }
+      ans.push_back(pq.top().first);
+      left++;
+    }
+    return ans;
+  }
+
+  vector<int> maxSlidingWindowRef(vector<int>& nums, int k) {
+    // 单调队列
+    vector<int> ans;
+    deque<int> dq;
+    for (int i = 0; i < nums.size(); i++) {
+      int x = nums[i];
+      while (!dq.empty() && nums[dq[dq.size() - 1]] < x) {
+        dq.pop_back();
+      }
+      dq.push_back(i);
+      if (i - dq[0] >= k) {
+        dq.pop_front();
+      }
+      if (i >= k - 1) {
+        ans.push_back(nums[dq[0]]);
+      }
+    }
+    return ans;
+  }
+
+  string minWindow(string s, string t) {
+    array<int, 52> cnt_s{};
+    array<int, 52> cnt_t{};
+    for (int i = 0; i < t.size(); i++) {
+      char c = t[i];
+      if ('a' <= c && c <= 'z') {
+        cnt_t[c - 'a']++;
+      } else {
+        cnt_t[c - 'A' + 26]++;
+      }
+    }
+    int left = 0;
+    int ans_l = 0, ans_r = s.size();
+    for (int i = 0; i < s.size(); i++) {
+      char c = s[i];
+      if ('a' <= c && c <= 'z') {
+        cnt_s[c - 'a']++;
+      } else {
+        cnt_s[c - 'A' + 26]++;
+      }
+      char m = s[left];
+      int idx = -1;
+      if ('a' <= m && m <= 'z') {
+        idx = m - 'a';
+      } else {
+        idx = m - 'A' + 26;
+      }
+      while (left <= i && cnt_s[idx] > cnt_t[idx]) {
+        cnt_s[idx]--;
+        left++;
+        m = s[left];
+        if ('a' <= m && m <= 'z') {
+          idx = m - 'a';
+        } else {
+          idx = m - 'A' + 26;
+        }
+      }
+      if (i - left >= ans_r - ans_l) {
+        continue;
+      }
+      bool flag = true;
+      for (int j = 0; j < 52; j++) {
+        if (cnt_s[j] < cnt_t[j]) {
+          flag = false;
+          break;
+        }
+      }
+      if (flag) {
+        ans_l = left;
+        ans_r = i;
+      }
+    }
+    if (ans_r - ans_l + 1 > s.size()) {
+      return "";
+    }
+
+    return string(s.data() + ans_l, ans_r - ans_l + 1);
+  }
+
+  int singleNumber(vector<int>& nums) {
+    int ans = 0;
+    for (auto&& x : nums) {
+      ans ^= x;
+    }
+    return ans;
+  }
+
+  int minAnagramLength(string s) {
+    int ans = s.size();
+    for (int i = s.size() - 1; i > 0; i--) {
+      if (s.size() % i != 0) {
+        continue;
+      }
+      array<int, 26> cnt_s{};
+      for (int j = 0; j < i; j++) {
+        cnt_s[s[j] - 'a']++;
+      }
+      bool flag = true;
+      for (int j = i; j < s.size(); j += i) {
+        array<int, 26> cnt_t{};
+        for (int k = j; k < j + i; k++) {
+          cnt_t[s[k] - 'a']++;
+        }
+        if (cnt_s != cnt_t) {
+          flag = false;
+          break;
+        }
+      }
+      if (!flag) {
+        break;
+      } else {
+        ans = i;
+      }
+    }
+    return ans;
+  }
+  int maxSubArray(vector<int>& nums) {
+    int mx = -INT_MAX;
+    vector<int> f(nums.size() + 1);
+    for (int i = 0; i < nums.size(); i++) {
+      f[i + 1] = max(0, f[i]) + nums[i];
+      mx = max(mx, f[i + 1]);
+    }
+    return mx;
+  }
+  int maxSubArrayRef(vector<int>& nums) {
+    int mx = -INT_MAX;
+    int mn_pre = 0;
+    int pre = 0;
+    for (int i = 0; i < nums.size(); i++) {
+      pre += nums[i];
+      mx = max(mx, pre - mn_pre);
+      mn_pre = min(mn_pre, pre);
+    }
+    return mx;
+  }
+  int climbStairs(int n) {
+    if (n < 2) {
+      return n;
+    }
+    int f1, f2;
+    f1 = 1;
+    f2 = 2;
+    for (int i = 3; i <= n; i++) {
+      int tmp = f1 + f2;
+      f1 = f2;
+      f2 = tmp;
+    }
+    return f2;
+  }
+
+  vector<vector<int>> generate(int numRows) {
+    vector<vector<int>> ans;
+    ans.push_back({1});
+    numRows--;
+    while (numRows--) {
+      vector<int> last = ans[ans.size() - 1];
+      vector<int> tmp(last.size() + 1);
+      tmp[0] = 1;
+      tmp[tmp.size() - 1] = 1;
+      for (int i = 1; i < tmp.size() - 1; i++) {
+        tmp[i] = last[i - 1] + last[i];
+      }
+      ans.push_back(tmp);
+    }
+    return ans;
+  }
 };
 
 class Solution22 {
@@ -310,13 +571,57 @@ void groupAnagrams(Solution& s) {
   }
 }
 
+class MyCalendar {
+ public:
+  vector<pair<int, int>> times;
+  MyCalendar() { times.clear(); }
+
+  bool book(int startTime, int endTime) {
+    int left = -1;
+    int right = times.size();
+    if (right == 0) {
+      times.push_back({startTime, endTime});
+      return true;
+    }
+    while (left + 1 < right) {
+      int mid = (right - left) / 2 + left;
+      if (times[mid].first < startTime) {
+        left = mid;
+      } else {
+        right = mid;
+      }
+    }
+    // for (auto x: times){
+    //     cout << x.first << ' '<< x.second << ' ' << left << ' ';
+    // }
+    if ((left == -1 && times[left + 1].first >= endTime) ||
+        (times[left].second <= startTime &&
+         (left == times.size() - 1 || times[left + 1].first >= endTime))) {
+      // times.push_back({startTime, endTime});
+      times.insert(times.begin()+(left+1),{startTime,endTime});
+      return true;
+    }
+    return false;
+  }
+};
+
+/**
+ * Your MyCalendar object will be instantiated and called as such:
+ * MyCalendar* obj = new MyCalendar();
+ * bool param_1 = obj->book(startTime,endTime);
+ */
+
 int main() {
-  Solution s;
-  // twoSum(s);
-  // groupAnagrams(s);
-  vector<int> ss({4, 2, 0, 3, 2, 5});
-  // ss.pop_back()
-  int ans = s.trap(ss);
-  cout << ans << '\n';
+  MyCalendar* obj = new MyCalendar();
+  bool param_1 = obj->book(47, 50);
+  param_1 = obj->book(33, 41);
+  param_1 = obj->book(39, 45);
+  param_1 = obj->book(33, 42);
+  param_1 = obj->book(25, 32);
+  param_1 = obj->book(26, 35);
+  param_1 = obj->book(19, 25);
+  param_1 = obj->book(3, 8);
+  param_1 = obj->book(8, 13);
+  param_1 = obj->book(18, 27);
   return 0;
 }

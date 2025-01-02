@@ -4,6 +4,8 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(hot100 "")
 
+add_compile_options(-fsanitize=undefined)
+
 target_sources(hot100
   PRIVATE
   "main.cc"
